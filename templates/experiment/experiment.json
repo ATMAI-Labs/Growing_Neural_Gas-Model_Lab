@@ -1,0 +1,14 @@
+{
+  "id": "exp-YYYYMMDD-8hex",
+  "slug": "short-slug",
+  "lab": "NNN-lab-slug",
+  "title": "Short experiment title",
+  "status": "planned",
+  "owner": "@github-handle",
+  "authors": [
+    "@github-handle"
+  ],
+  "hypothesis": "One falsifiable hypothesis.",
+  "entrypoint": null,
+  "references": []
+}

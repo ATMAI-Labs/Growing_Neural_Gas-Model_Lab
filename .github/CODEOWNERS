@@ -1,0 +1,8 @@
+# Route sensitive shared changes to an ATMAI maintainer.
+/.github/ @abrahamabel @akasaragod-kb
+/AGENTS.md @abrahamabel @akasaragod-kb
+/CONTRIBUTING.md @abrahamabel @akasaragod-kb
+/LICENSE @abrahamabel @akasaragod-kb
+/SECURITY.md @abrahamabel @akasaragod-kb
+/scripts/ @abrahamabel @akasaragod-kb
+/src/ @abrahamabel @akasaragod-kb

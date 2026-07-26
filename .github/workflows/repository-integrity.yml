@@ -1,0 +1,38 @@
+name: Repository Integrity
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-integrity-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repository-integrity:
+    name: Repository integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out the proposed revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Show the runtime
+        run: python3 --version
+
+      - name: Validate the research-lab contract
+        run: python3 scripts/validate_repository.py
+
+      - name: Run repository tests
+        run: python3 -m unittest discover -s tests -p 'test_*.py'

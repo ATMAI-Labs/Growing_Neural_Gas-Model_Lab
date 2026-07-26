@@ -1,0 +1,7 @@
+{
+  "id": "NNN-lab-slug",
+  "title": "Short lab title",
+  "status": "planned",
+  "owner": "@github-handle",
+  "question": "One falsifiable research question."
+}

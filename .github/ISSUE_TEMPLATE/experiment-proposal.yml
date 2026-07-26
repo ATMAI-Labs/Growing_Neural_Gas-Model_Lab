@@ -1,0 +1,46 @@
+name: Experiment proposal
+description: Propose one falsifiable experiment in an existing or new lab.
+title: "[Experiment]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to discuss a new experiment or major change. Do not
+        include private data, credentials, or patent-sensitive implementation
+        details.
+  - type: input
+    id: lab
+    attributes:
+      label: Lab
+      description: Existing lab ID, or explain why a new lab is necessary.
+      placeholder: 001-canonical-gng
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: State the question this experiment answers.
+    validations:
+      required: true
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Falsifiable hypothesis
+      description: State what evidence would support or falsify it.
+    validations:
+      required: true
+  - type: textarea
+    id: protocol
+    attributes:
+      label: Proposed protocol
+      description: Describe data, baselines, parameters, seeds, metrics, and controls.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources, data, and limitations
+      description: Link prior work and licenses; state the data classification and major limitations.
+    validations:
+      required: true

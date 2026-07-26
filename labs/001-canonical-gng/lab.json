@@ -1,0 +1,7 @@
+{
+  "id": "001-canonical-gng",
+  "title": "Canonical Growing Neural Gas",
+  "status": "active",
+  "owner": "@abrahamabel",
+  "question": "Can we reproduce canonical Growing Neural Gas topology learning with deterministic, inspectable behavior on controlled stationary distributions?"
+}
