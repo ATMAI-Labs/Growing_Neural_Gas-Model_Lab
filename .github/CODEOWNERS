@@ -1,0 +1,15 @@
+# Default review by either current ATMAI maintainer.
+* @abrahamabel @akasaragod-kb
+
+# Explicitly protect policy, automation, schemas, and promoted code.
+/.github/ @abrahamabel @akasaragod-kb
+/AGENTS.md @abrahamabel @akasaragod-kb
+/CODE_OF_CONDUCT.md @abrahamabel @akasaragod-kb
+/CONTRIBUTING.md @abrahamabel @akasaragod-kb
+/GOVERNANCE.md @abrahamabel @akasaragod-kb
+/LICENSE @abrahamabel @akasaragod-kb
+/SECURITY.md @abrahamabel @akasaragod-kb
+/docs/ @abrahamabel @akasaragod-kb
+/schemas/ @abrahamabel @akasaragod-kb
+/scripts/ @abrahamabel @akasaragod-kb
+/src/ @abrahamabel @akasaragod-kb

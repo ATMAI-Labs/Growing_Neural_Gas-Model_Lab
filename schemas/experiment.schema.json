@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/raw/main/schemas/experiment.schema.json",
+  "title": "ATMAI GNG experiment manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "slug",
+    "lab_id",
+    "title",
+    "status",
+    "research_type",
+    "hypothesis",
+    "authors",
+    "created",
+    "updated",
+    "predecessors",
+    "implementation",
+    "data_sources",
+    "reproducibility",
+    "metrics",
+    "provenance"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "$ref": "#/$defs/experiment_id"
+    },
+    "slug": {
+      "$ref": "#/$defs/slug"
+    },
+    "lab_id": {
+      "$ref": "#/$defs/lab_id"
+    },
+    "title": {
+      "$ref": "#/$defs/non_empty_string"
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "active",
+        "completed",
+        "inconclusive",
+        "failed",
+        "archived"
+      ]
+    },
+    "research_type": {
+      "enum": [
+        "replication",
+        "benchmark",
+        "ablation",
+        "extension",
+        "exploratory"
+      ]
+    },
+    "hypothesis": {
+      "$ref": "#/$defs/non_empty_string"
+    },
+    "authors": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/github_handle"
+      }
+    },
+    "created": {
+      "$ref": "#/$defs/date"
+    },
+    "updated": {
+      "$ref": "#/$defs/date"
+    },
+    "predecessors": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "language",
+        "entrypoint",
+        "environment"
+      ],
+      "properties": {
+        "language": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "entrypoint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "environment": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "data_sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "reproducibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "seed_policy",
+        "commands"
+      ],
+      "properties": {
+        "seed_policy": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/non_empty_string"
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "title",
+          "url",
+          "license"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "paper",
+              "repository",
+              "dataset",
+              "documentation"
+            ]
+          },
+          "title": {
+            "$ref": "#/$defs/non_empty_string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "license": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "non_empty_string": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lab_id": {
+      "type": "string",
+      "pattern": "^[0-9]{3}-[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "experiment_id": {
+      "type": "string",
+      "pattern": "^exp-[0-9]{8}-[0-9a-f]{8}$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "github_handle": {
+      "type": "string",
+      "pattern": "^@[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "url",
+        "license",
+        "checksum"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "license": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "checksum": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

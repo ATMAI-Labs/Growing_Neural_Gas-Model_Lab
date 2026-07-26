@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schemas/lab.schema.json",
+  "schema_version": 1,
+  "id": "NNN-lab-slug",
+  "title": "Short lab title",
+  "status": "proposed",
+  "research_question": "One falsifiable research question.",
+  "owners": [
+    "@github-handle"
+  ],
+  "created": "YYYY-MM-DD",
+  "updated": "YYYY-MM-DD",
+  "license": "MIT",
+  "references": []
+}

@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Notebooks and editors
+.ipynb_checkpoints/
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Raw data, generated artifacts, and model weights
+data/
+artifacts/
+checkpoints/
+models/
+*.ckpt
+*.h5
+*.hdf5
+*.joblib
+*.onnx
+*.pkl
+*.pt
+*.pth
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/

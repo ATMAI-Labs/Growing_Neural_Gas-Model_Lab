@@ -1,0 +1,63 @@
+name: Experiment proposal
+description: Propose one falsifiable experiment in an existing or new lab.
+title: "[Experiment]: "
+labels:
+  - experiment
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Proposals establish scope before code is written. Do not include private
+        data, credentials, or patent-sensitive implementation details.
+  - type: input
+    id: lab
+    attributes:
+      label: Lab
+      description: Existing lab ID, or explain why a new lab is necessary.
+      placeholder: 001-canonical-gng
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: State the question this experiment answers.
+    validations:
+      required: true
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Falsifiable hypothesis
+      description: State what evidence would support or falsify it.
+    validations:
+      required: true
+  - type: textarea
+    id: protocol
+    attributes:
+      label: Proposed protocol
+      description: Describe data, baselines, parameters, seeds, metrics, and controls.
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Sources and prior work
+      description: Link primary papers, repositories, datasets, and licenses.
+    validations:
+      required: true
+  - type: dropdown
+    id: data
+    attributes:
+      label: Most restrictive data classification
+      options:
+        - Synthetic
+        - Public
+        - Restricted or sensitive (do not upload)
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Known limitations and risks
+    validations:
+      required: true

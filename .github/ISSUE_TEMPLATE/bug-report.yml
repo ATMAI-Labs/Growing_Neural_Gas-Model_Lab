@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a reproducible defect in repository tooling or promoted code.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report vulnerabilities, exposed secrets, or sensitive data here.
+        Follow SECURITY.md for private reporting.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is wrong, and what did you expect?
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Revision
+      description: Commit SHA, release, lab ID, or experiment ID.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include exact commands and a minimal public-safe example.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, architecture, runtime, and dependency versions. Omit usernames and hostnames.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Redact credentials, local private paths, and personal data.
+      render: shell
