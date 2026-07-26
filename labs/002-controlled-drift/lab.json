@@ -1,0 +1,7 @@
+{
+  "id": "002-controlled-drift",
+  "title": "Controlled Drift",
+  "status": "active",
+  "owner": "@abrahamabel",
+  "question": "How does the promoted canonical GNG baseline respond prequentially to controlled geometric and density drift, and which observed failures justify a later adaptation or recurrence-memory mechanism?"
+}
