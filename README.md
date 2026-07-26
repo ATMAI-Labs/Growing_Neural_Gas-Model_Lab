@@ -24,13 +24,12 @@ Labs are organized by research question, not by person:
 
 ```text
 labs/
-└── 001-canonical-gng/
-    ├── lab.json
-    ├── README.md
-    └── experiments/
-        └── exp-20260727-ee260fe9-fritzke-baseline/
-            ├── experiment.json
-            └── README.md
+├── 001-canonical-gng/
+│   └── experiments/exp-20260727-ee260fe9-fritzke-baseline/
+└── 002-controlled-drift/
+    └── experiments/exp-20260727-eee720cf-frozen-baseline-drift/
+src/
+└── atmai_gng/
 ```
 
 Authorship lives in the manifest and Git history. Folder names remain stable if
@@ -65,13 +64,17 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the short contribution guide.
 - Label experiments as planned, running, complete, failed, or inconclusive.
 - Do not present an exploratory result as an ATMAI capability.
 
-## Current state and next milestone
+## Current evidence
 
 The canonical Fritzke baseline is reproduced in
 [`labs/001-canonical-gng`](labs/001-canonical-gng/) and its unchanged reference
-engine is promoted in [`src/atmai_gng`](src/atmai_gng/). The next milestone is
-to measure that frozen baseline under deterministic controlled drift before
-adding adaptation or concept-memory mechanisms.
+engine is promoted in [`src/atmai_gng`](src/atmai_gng/).
+
+The first [controlled-drift diagnostic](labs/002-controlled-drift/) records
+adaptation under translation, rotation, density reweighting, and A-B-A
+recurrence. It also preserves the important negative boundary: low return
+error coexisted with a dormant geometric component, and continuing node growth
+confounded the recurrence comparison. No semantic memory claim is made.
 
 ## License
 
