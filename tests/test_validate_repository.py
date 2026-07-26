@@ -52,7 +52,7 @@ class RepositoryValidationTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         manifest_path = next((root / "labs").glob("*/experiments/*/experiment.json"))
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        manifest["implementation"]["entrypoint"] = "../../outside.py"
+        manifest["entrypoint"] = "../../outside.py"
         manifest_path.write_text(
             json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
         )

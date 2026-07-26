@@ -1,29 +1,14 @@
 {
-  "$schema": "../../../../schemas/experiment.schema.json",
-  "schema_version": 1,
   "id": "exp-YYYYMMDD-8hex",
-  "slug": "experiment-slug",
-  "lab_id": "NNN-lab-slug",
+  "slug": "short-slug",
+  "lab": "NNN-lab-slug",
   "title": "Short experiment title",
-  "status": "proposed",
-  "research_type": "exploratory",
-  "hypothesis": "One falsifiable hypothesis.",
+  "status": "planned",
+  "owner": "@github-handle",
   "authors": [
     "@github-handle"
   ],
-  "created": "YYYY-MM-DD",
-  "updated": "YYYY-MM-DD",
-  "predecessors": [],
-  "implementation": {
-    "language": "Python",
-    "entrypoint": null,
-    "environment": null
-  },
-  "data_sources": [],
-  "reproducibility": {
-    "seed_policy": "Describe the seed policy.",
-    "commands": []
-  },
-  "metrics": [],
-  "provenance": []
+  "hypothesis": "One falsifiable hypothesis.",
+  "entrypoint": null,
+  "references": []
 }

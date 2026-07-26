@@ -1,42 +1,20 @@
-## Purpose
+## What and why
 
-<!-- What problem, question, or repository concern does this PR address? -->
+<!-- Explain the focused change and link an issue when one exists. -->
 
-## Scope
+Related issue:
 
-<!-- List the paths and behavior changed. Link the accepted issue. -->
+## Research notes
 
-Closes #
+- Hypothesis or purpose:
+- Evidence status: planned / observed / reproduced / not applicable
+- Sources and licenses:
+- Known limitations:
 
-## Scientific statement
-
-- Hypothesis or claim:
-- Current evidence status: proposed / observed / reproduced / not applicable
-- What this change does **not** establish:
-
-## Reproducibility and provenance
-
-- Data source and classification:
-- Environment or lockfile:
-- Seeds:
-- Commands run:
-- External code/paper/tool provenance and licenses:
-
-## Validation
+## Checks
 
 - [ ] `python3 scripts/validate_repository.py`
 - [ ] `python3 -m unittest discover -s tests -p 'test_*.py'`
-- [ ] Added or updated tests where behavior changed
-- [ ] Recorded failed or inconclusive results honestly
-- [ ] No secrets, credentials, personal/clinical data, raw datasets, model
-      weights, or prohibited artifacts
-- [ ] Documentation and manifests match the submitted behavior
+- [ ] No secrets, sensitive data, raw datasets, or model weights
+- [ ] Manifests and documentation match the change
 - [ ] I have the right to submit this work under the stated licenses
-
-## Risk and rollback
-
-<!-- What could break? Is stable source affected? How can this be reverted? -->
-
-## Reviewer notes
-
-<!-- Call out workflow, schema, security, dependency, or stable-source changes. -->

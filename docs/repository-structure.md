@@ -1,78 +1,41 @@
-# Repository structure contract
+# Repository structure
 
-## Why labs are not organized by person
+Folders organize work; they do not provide security. GitHub pull-request rules
+and automated checks protect `main`.
 
-Contributor folders such as `Lab-1-Abe` mix identity with scientific scope.
-They become stale when ownership changes, encourage incompatible local
-conventions, and make cross-experiment automation difficult. They also provide
-no Git security boundary.
+## Labs
 
-The durable unit is the research question:
+Labs use `labs/NNN-topic-slug/` and represent a stable research question.
+People are listed in `lab.json`, not encoded in the folder name.
+
+Labs are created rarely, after discussion in an issue.
+
+## Experiments
+
+Experiments use:
 
 ```text
-labs/NNN-lab-slug/
-├── lab.json
-├── README.md
-└── experiments/
-    └── exp-YYYYMMDD-8hex-experiment-slug/
-        ├── experiment.json
-        └── README.md
+exp-YYYYMMDD-8hex-short-slug/
+├── experiment.json
+└── README.md
 ```
 
-People are recorded in `owners` and `authors`, in pull requests, and in Git
-history.
+The date and random token let contributors create experiments in parallel
+without reserving a sequence number.
 
-## Naming
+Create a new experiment for a new hypothesis. Do not rewrite a completed,
+failed, or inconclusive experiment into a different claim.
 
-- Lab IDs are three digits followed by a lowercase kebab-case slug. Labs are
-  rare and receive their number in an accepted proposal issue.
-- Experiment IDs contain their UTC creation date and a random eight-character
-  lowercase hexadecimal token. This avoids central allocation and merge
-  conflicts when contributors work in parallel.
-- An experiment directory appends a lowercase kebab-case slug to the immutable
-  experiment ID.
-- IDs are never reused, even after an experiment is archived.
-- Names describe the question or intervention, not the expected result.
+## Stable source
 
-Examples:
+Experiments may use code from `src/`. They must not import implementation code
+from another experiment.
 
-- `labs/001-canonical-gng`
-- `labs/001-canonical-gng/experiments/exp-20260727-ee260fe9-fritzke-baseline`
-- `labs/002-stream-drift/experiments/exp-20260803-a13f9c2d-abrupt-recurrence`
+Move code into `src/` only in a dedicated pull request with tests, reproducible
+evidence, provenance, and a clear explanation of what is now stable.
 
-## Lab lifecycle
+## Contributor access
 
-`proposed → active → completed → archived`
-
-A completed lab remains available for provenance. Archiving is a status change,
-not deletion.
-
-## Experiment lifecycle
-
-`proposed → active → completed`
-
-An experiment may instead end as `inconclusive`, `failed`, or `archived`. Those
-states are scientific outcomes, not repository failures.
-
-## Isolation rules
-
-- Experiments may depend on promoted code in `src/`.
-- Experiments must not import implementation code from another experiment.
-- A new hypothesis receives a new experiment directory.
-- Raw datasets and generated model artifacts live outside Git. Manifests record
-  stable source identifiers and checksums where possible.
-- Small, reviewable plots and result summaries may be committed when their
-  generation command and source experiment are documented.
-- A pull request should normally touch one experiment or one shared concern.
-
-## Ownership
-
-Manifest owners are stewards and points of contact. GitHub `CODEOWNERS` controls
-review routing. Only users with repository write access can be enforceable code
-owners, so external contributors remain authors without receiving merge rights.
-
-## Stable-code promotion
-
-Code is copied or refactored into `src/` only through a dedicated promotion pull
-request. That pull request must link the completed experiment, preserve
-provenance, add tests, and explain which behavior is now considered stable.
+New contributors begin with forks and pull requests. Trusted contributors may
+later receive triage or write access, but nobody bypasses protected `main` or
+merges failing checks.

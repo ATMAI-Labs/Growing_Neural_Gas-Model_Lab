@@ -9,8 +9,8 @@ These instructions apply to the entire repository.
   contributor's personal folder.
 - Organize experiments as
   `labs/NNN-kebab-case/experiments/exp-YYYYMMDD-8hex-kebab-case`.
-- Record authors and owners in manifests. Do not infer authorship from a folder
-  name.
+- Record lab owners and experiment authors in manifests. Do not infer
+  authorship from a folder name.
 - Do not edit a completed experiment to make a new claim. Create a new
   experiment and link the predecessor.
 - Do not promote exploratory code into `src/` without reproducible evidence,

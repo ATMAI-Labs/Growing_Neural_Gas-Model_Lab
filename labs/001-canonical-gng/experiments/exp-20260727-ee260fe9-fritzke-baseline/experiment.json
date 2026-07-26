@@ -1,50 +1,16 @@
 {
-  "$schema": "../../../../schemas/experiment.schema.json",
-  "schema_version": 1,
   "id": "exp-20260727-ee260fe9",
   "slug": "fritzke-baseline",
-  "lab_id": "001-canonical-gng",
+  "lab": "001-canonical-gng",
   "title": "Fritzke canonical GNG baseline",
-  "status": "proposed",
-  "research_type": "replication",
-  "hypothesis": "A deterministic implementation of the canonical GNG update sequence will reduce quantization error while learning a connected local prototype graph on controlled stationary two-dimensional distributions.",
+  "status": "planned",
+  "owner": "@abrahamabel",
   "authors": [
     "@abrahamabel"
   ],
-  "created": "2026-07-27",
-  "updated": "2026-07-27",
-  "predecessors": [],
-  "implementation": {
-    "language": "Python",
-    "entrypoint": null,
-    "environment": null
-  },
-  "data_sources": [
-    {
-      "id": "generated-synthetic-2d",
-      "url": null,
-      "license": "Generated for this experiment",
-      "checksum": null
-    }
-  ],
-  "reproducibility": {
-    "seed_policy": "Fixed seeds will be listed before the experiment becomes active.",
-    "commands": []
-  },
-  "metrics": [
-    "quantization_error",
-    "topographic_error",
-    "node_count",
-    "edge_count",
-    "connected_components",
-    "update_time"
-  ],
-  "provenance": [
-    {
-      "kind": "paper",
-      "title": "A Growing Neural Gas Network Learns Topologies",
-      "url": "https://proceedings.neurips.cc/paper/1994/hash/d56b9fc4b0f1be8871f5e1c40c0067e7-Abstract.html",
-      "license": null
-    }
+  "hypothesis": "A deterministic implementation of canonical GNG will reduce quantization error while learning a local prototype graph on controlled stationary distributions.",
+  "entrypoint": null,
+  "references": [
+    "https://proceedings.neurips.cc/paper/1994/hash/d56b9fc4b0f1be8871f5e1c40c0067e7-Abstract.html"
   ]
 }

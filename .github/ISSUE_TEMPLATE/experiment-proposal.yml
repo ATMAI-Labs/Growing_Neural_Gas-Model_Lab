@@ -1,14 +1,13 @@
 name: Experiment proposal
 description: Propose one falsifiable experiment in an existing or new lab.
 title: "[Experiment]: "
-labels:
-  - experiment
 body:
   - type: markdown
     attributes:
       value: |
-        Proposals establish scope before code is written. Do not include private
-        data, credentials, or patent-sensitive implementation details.
+        Use this form to discuss a new experiment or major change. Do not
+        include private data, credentials, or patent-sensitive implementation
+        details.
   - type: input
     id: lab
     attributes:
@@ -39,25 +38,9 @@ body:
     validations:
       required: true
   - type: textarea
-    id: provenance
+    id: sources
     attributes:
-      label: Sources and prior work
-      description: Link primary papers, repositories, datasets, and licenses.
-    validations:
-      required: true
-  - type: dropdown
-    id: data
-    attributes:
-      label: Most restrictive data classification
-      options:
-        - Synthetic
-        - Public
-        - Restricted or sensitive (do not upload)
-    validations:
-      required: true
-  - type: textarea
-    id: limitations
-    attributes:
-      label: Known limitations and risks
+      label: Sources, data, and limitations
+      description: Link prior work and licenses; state the data classification and major limitations.
     validations:
       required: true
