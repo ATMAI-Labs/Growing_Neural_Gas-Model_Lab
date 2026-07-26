@@ -65,10 +65,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the short contribution guide.
 - Label experiments as planned, running, complete, failed, or inconclusive.
 - Do not present an exploratory result as an ATMAI capability.
 
-## Current next milestone
+## Current state and next milestone
 
-Implement and test the canonical Fritzke GNG baseline in
-[`labs/001-canonical-gng`](labs/001-canonical-gng/).
+The canonical Fritzke baseline is reproduced in
+[`labs/001-canonical-gng`](labs/001-canonical-gng/) and its unchanged reference
+engine is promoted in [`src/atmai_gng`](src/atmai_gng/). The next milestone is
+to measure that frozen baseline under deterministic controlled drift before
+adding adaptation or concept-memory mechanisms.
 
 ## License
 
