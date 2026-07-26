@@ -1,0 +1,369 @@
+{
+  "datasets": [
+    {
+      "checkpoints": [
+        {
+          "edges": 0,
+          "mean_squared_quantization_error": 1.12394827077,
+          "nodes": 2,
+          "step": 0,
+          "topographic_error": 1.0
+        },
+        {
+          "edges": 22,
+          "mean_squared_quantization_error": 0.067857211724,
+          "nodes": 12,
+          "step": 1000,
+          "topographic_error": 0.0244140625
+        },
+        {
+          "edges": 121,
+          "mean_squared_quantization_error": 0.015531822135,
+          "nodes": 52,
+          "step": 5000,
+          "topographic_error": 0.02490234375
+        },
+        {
+          "edges": 246,
+          "mean_squared_quantization_error": 0.007672573732,
+          "nodes": 100,
+          "step": 10000,
+          "topographic_error": 0.0185546875
+        }
+      ],
+      "churn": {
+        "edge_additions": 447,
+        "edge_events": 648,
+        "edge_removals": 201,
+        "node_events": 98,
+        "node_insertions": 98,
+        "node_removals": 0
+      },
+      "final_graph": {
+        "components": 1,
+        "edges": 246,
+        "isolates": 0,
+        "nodes": 100
+      },
+      "initial_vectors": [
+        [
+          0.49657085412,
+          -0.52570261206
+        ],
+        [
+          0.93180520197,
+          -0.389944230615
+        ]
+      ],
+      "name": "uniform_square",
+      "seeds": {
+        "evaluation": 10103,
+        "initialization": 10101,
+        "training": 10102
+      },
+      "timing_seconds": {
+        "evaluation": 0.964882626,
+        "total": 4.687186875,
+        "training": 3.711608776
+      }
+    },
+    {
+      "checkpoints": [
+        {
+          "edges": 0,
+          "mean_squared_quantization_error": 1.929937417533,
+          "nodes": 2,
+          "step": 0,
+          "topographic_error": 1.0
+        },
+        {
+          "edges": 12,
+          "mean_squared_quantization_error": 0.03242048856,
+          "nodes": 12,
+          "step": 1000,
+          "topographic_error": 0.0
+        },
+        {
+          "edges": 52,
+          "mean_squared_quantization_error": 0.004167099843,
+          "nodes": 52,
+          "step": 5000,
+          "topographic_error": 0.0
+        },
+        {
+          "edges": 169,
+          "mean_squared_quantization_error": 0.002494494006,
+          "nodes": 100,
+          "step": 10000,
+          "topographic_error": 0.03515625
+        }
+      ],
+      "churn": {
+        "edge_additions": 273,
+        "edge_events": 377,
+        "edge_removals": 104,
+        "node_events": 98,
+        "node_insertions": 98,
+        "node_removals": 0
+      },
+      "final_graph": {
+        "components": 1,
+        "edges": 169,
+        "isolates": 0,
+        "nodes": 100
+      },
+      "initial_vectors": [
+        [
+          -1.056901175133,
+          -0.241812973493
+        ],
+        [
+          -0.970738957928,
+          -0.04627310141
+        ]
+      ],
+      "name": "noisy_ring",
+      "seeds": {
+        "evaluation": 20103,
+        "initialization": 20101,
+        "training": 20102
+      },
+      "timing_seconds": {
+        "evaluation": 0.976303792,
+        "total": 3.662931959,
+        "training": 2.675973843
+      }
+    },
+    {
+      "checkpoints": [
+        {
+          "edges": 0,
+          "mean_squared_quantization_error": 0.887051192666,
+          "nodes": 2,
+          "step": 0,
+          "topographic_error": 1.0
+        },
+        {
+          "edges": 18,
+          "mean_squared_quantization_error": 0.020394616745,
+          "nodes": 12,
+          "step": 1000,
+          "topographic_error": 0.03076171875
+        },
+        {
+          "edges": 116,
+          "mean_squared_quantization_error": 0.005271982294,
+          "nodes": 52,
+          "step": 5000,
+          "topographic_error": 0.0205078125
+        },
+        {
+          "edges": 244,
+          "mean_squared_quantization_error": 0.002836707424,
+          "nodes": 100,
+          "step": 10000,
+          "topographic_error": 0.0185546875
+        }
+      ],
+      "churn": {
+        "edge_additions": 442,
+        "edge_events": 640,
+        "edge_removals": 198,
+        "node_events": 98,
+        "node_insertions": 98,
+        "node_removals": 0
+      },
+      "final_graph": {
+        "components": 1,
+        "edges": 244,
+        "isolates": 0,
+        "nodes": 100
+      },
+      "initial_vectors": [
+        [
+          0.457300284415,
+          0.305817714047
+        ],
+        [
+          0.830536167651,
+          0.721490821408
+        ]
+      ],
+      "name": "two_gaussian_blobs",
+      "seeds": {
+        "evaluation": 30103,
+        "initialization": 30101,
+        "training": 30102
+      },
+      "timing_seconds": {
+        "evaluation": 0.958679376,
+        "total": 4.5693835,
+        "training": 3.599123208
+      }
+    },
+    {
+      "checkpoints": [
+        {
+          "edges": 0,
+          "mean_squared_quantization_error": 0.551965514608,
+          "nodes": 2,
+          "step": 0,
+          "topographic_error": 1.0
+        },
+        {
+          "edges": 17,
+          "mean_squared_quantization_error": 0.033385974892,
+          "nodes": 12,
+          "step": 1000,
+          "topographic_error": 0.0
+        },
+        {
+          "edges": 53,
+          "mean_squared_quantization_error": 0.004443051529,
+          "nodes": 52,
+          "step": 5000,
+          "topographic_error": 0.00048828125
+        },
+        {
+          "edges": 168,
+          "mean_squared_quantization_error": 0.002536143283,
+          "nodes": 100,
+          "step": 10000,
+          "topographic_error": 0.01953125
+        }
+      ],
+      "churn": {
+        "edge_additions": 297,
+        "edge_events": 426,
+        "edge_removals": 129,
+        "node_events": 98,
+        "node_insertions": 98,
+        "node_removals": 0
+      },
+      "final_graph": {
+        "components": 2,
+        "edges": 168,
+        "isolates": 0,
+        "nodes": 100
+      },
+      "initial_vectors": [
+        [
+          0.977327452792,
+          0.114579814176
+        ],
+        [
+          0.207773951692,
+          0.965597179122
+        ]
+      ],
+      "name": "two_moons",
+      "seeds": {
+        "evaluation": 40103,
+        "initialization": 40101,
+        "training": 40102
+      },
+      "timing_seconds": {
+        "evaluation": 1.010466166,
+        "total": 3.755017959,
+        "training": 2.732670407
+      }
+    }
+  ],
+  "definitions": {
+    "fixtures": {
+      "noisy_ring": {
+        "distribution": "theta ~ Uniform(0, 2*pi), r = 1 + Normal(0, 0.05), point = (r*cos(theta), r*sin(theta))"
+      },
+      "two_gaussian_blobs": {
+        "distribution": "choose either component with probability 0.5; means are (-0.65, -0.35) and (0.65, 0.35), with independent Normal(0, 0.18) coordinate noise"
+      },
+      "two_moons": {
+        "distribution": "choose either moon with probability 0.5 and theta ~ Uniform(0, pi); base points are (cos(theta), sin(theta)) and (1-cos(theta), 0.5-sin(theta)); add independent Normal(0, 0.05) coordinate noise"
+      },
+      "uniform_square": {
+        "distribution": "x and y are independent Uniform(-1, 1)"
+      }
+    },
+    "metrics": {
+      "churn": "event counts after initialization: node insertions and removals, plus edge additions and removals reported by each online update; repeated changes to the same identity count as separate events",
+      "components": "number of connected components in the final undirected graph",
+      "isolates": "number of final nodes with degree zero",
+      "mean_squared_quantization_error": "arithmetic mean over the fixed evaluation fixture of the squared Euclidean distance from each sample to its nearest node",
+      "timing_seconds": "wall-clock elapsed time measured with time.perf_counter; training includes sample generation and online updates",
+      "topographic_error": "fraction of the fixed evaluation fixture for which the nearest and second-nearest nodes do not share an edge",
+      "tracemalloc_peak_bytes": "maximum Python-traced allocated memory during report construction; it excludes memory not tracked by tracemalloc"
+    },
+    "nearest_node_ties": "equal-distance nodes are ordered by ascending integer node id",
+    "parameter_profile": "learning and aging values reproduce the cited paper's Figure 2 example; max_nodes=100 is a local growth cap, and none of these values is claimed as a universal GNG default"
+  },
+  "environment": {
+    "machine": "arm64",
+    "python_implementation": "CPython",
+    "python_version": "3.9.6",
+    "release": "27.0.0",
+    "system": "Darwin"
+  },
+  "experiment_id": "exp-20260727-ee260fe9",
+  "parameters": {
+    "error_decay": 0.995,
+    "error_reduction": 0.5,
+    "insertion_interval": 100,
+    "max_edge_age": 50,
+    "max_nodes": 100,
+    "neighbor_learning_rate": 0.006,
+    "winner_learning_rate": 0.2
+  },
+  "protocol": {
+    "dataset_order": [
+      "uniform_square",
+      "noisy_ring",
+      "two_gaussian_blobs",
+      "two_moons"
+    ],
+    "dimensions": 2,
+    "evaluation_checkpoints": [
+      0,
+      1000,
+      5000,
+      10000
+    ],
+    "evaluation_samples_per_dataset": 2048,
+    "growth_cap_behavior": "once 100 live nodes exist, insertion stops but all other online updates continue through the fixed training step count",
+    "training_steps_per_dataset": 10000
+  },
+  "provenance_urls": {
+    "paper": "https://proceedings.neurips.cc/paper/1994/hash/d56b9fc4b0f1be8871f5e1c40c0067e7-Abstract.html",
+    "paper_pdf": "https://proceedings.neurips.cc/paper/1994/file/d56b9fc4b0f1be8871f5e1c40c0067e7-Paper.pdf"
+  },
+  "schema": "atmai.gng.stationary-baseline/v1",
+  "seeds": {
+    "noisy_ring": {
+      "evaluation": 20103,
+      "initialization": 20101,
+      "training": 20102
+    },
+    "two_gaussian_blobs": {
+      "evaluation": 30103,
+      "initialization": 30101,
+      "training": 30102
+    },
+    "two_moons": {
+      "evaluation": 40103,
+      "initialization": 40101,
+      "training": 40102
+    },
+    "uniform_square": {
+      "evaluation": 10103,
+      "initialization": 10101,
+      "training": 10102
+    }
+  },
+  "source_sha256": {
+    "gng.py": "e684e68c0e87a7664e7c5294647f3c09cdb939775e2d322321268b5c56d7ee10",
+    "run.py": "f100ad8a483b2fde253a9dd71b5805d324f9c3819dc4e8c30edae025d0e2ace8"
+  },
+  "timing_seconds": {
+    "total": 16.68114775
+  },
+  "tracemalloc_peak_bytes": 528117
+}

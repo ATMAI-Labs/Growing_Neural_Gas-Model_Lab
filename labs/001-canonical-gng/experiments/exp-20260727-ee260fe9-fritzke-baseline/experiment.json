@@ -3,14 +3,25 @@
   "slug": "fritzke-baseline",
   "lab": "001-canonical-gng",
   "title": "Fritzke canonical GNG baseline",
-  "status": "planned",
+  "status": "complete",
   "owner": "@abrahamabel",
   "authors": [
     "@abrahamabel"
   ],
   "hypothesis": "A deterministic implementation of canonical GNG will reduce quantization error while learning a local prototype graph on controlled stationary distributions.",
-  "entrypoint": null,
+  "entrypoint": "run.py",
   "references": [
-    "https://proceedings.neurips.cc/paper/1994/hash/d56b9fc4b0f1be8871f5e1c40c0067e7-Abstract.html"
+    "https://proceedings.neurips.cc/paper/1994/hash/d56b9fc4b0f1be8871f5e1c40c0067e7-Abstract.html",
+    "https://papers.nips.cc/paper/1994/file/d56b9fc4b0f1be8871f5e1c40c0067e7-Paper.pdf",
+    "https://github.com/haifengl/smile/blob/825050961db43990f31355ea1234f6757a94a1b2/core/src/main/java/smile/vq/GrowingNeuralGas.java",
+    "https://github.com/haifengl/smile/blob/825050961db43990f31355ea1234f6757a94a1b2/LICENSE",
+    "https://github.com/makism/dyconnmap/blob/cbef247e635d55cb1489ba1e429d9d472b501b56/dyconnmap/cluster/gng.py",
+    "https://github.com/makism/dyconnmap/blob/cbef247e635d55cb1489ba1e429d9d472b501b56/LICENSE",
+    "https://github.com/itdxer/neupy/blob/317ed4204b5239e8be2b94a95fe3157c5f9edc65/neupy/algorithms/competitive/growing_neural_gas.py",
+    "https://github.com/itdxer/neupy/blob/317ed4204b5239e8be2b94a95fe3157c5f9edc65/LICENSE",
+    "https://github.com/kudkudak/Growing-Neural-Gas/blob/c1c72fe4f33cebe203f094babbe9b2bdddb85a02/R/gng.R",
+    "https://github.com/kudkudak/Growing-Neural-Gas/blob/c1c72fe4f33cebe203f094babbe9b2bdddb85a02/LICENSE",
+    "https://github.com/naotoo1/prosemble/blob/ea0caaf9a3bbedab93816c7a5c9c411d8cd41999/prosemble/models/growing_neural_gas.py",
+    "https://github.com/naotoo1/prosemble/blob/ea0caaf9a3bbedab93816c7a5c9c411d8cd41999/LICENSE"
   ]
 }
