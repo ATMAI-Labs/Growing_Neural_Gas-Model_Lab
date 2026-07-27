@@ -1,5 +1,7 @@
 # ATMAI Growing Neural Gas Model Lab
 
+_A project by ATMAI LABS_
+
 [![Repository integrity](https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/actions/workflows/repository-integrity.yml/badge.svg)](https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/actions/workflows/repository-integrity.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
