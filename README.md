@@ -75,8 +75,11 @@ python3 scripts/reproduce_experiments.py
 
 The [reproduction guide](docs/reproduction.md) describes the frozen file
 registry, exact comparison rules, and how future engine versions preserve
-historical evidence. CI runs the full registered experiments as well as the
-unit tests.
+historical evidence. CI runs the full registered experiments on a documented
+macOS/Python reference runtime and requires repository tests on Linux as well.
+The [portability record](docs/portability.md) preserves two observed Linux
+last-decimal differences in the full successor panel; universal exact replay
+has not been established.
 
 The canonical Fritzke baseline is reproduced in
 [`labs/001-canonical-gng`](labs/001-canonical-gng/) and its unchanged reference

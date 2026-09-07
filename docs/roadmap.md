@@ -27,6 +27,11 @@ loss. The explicitly post hoc two-phase average was about 5.32% worse for prior
 A. This tradeoff is the basis for the next bounded-budget failure study; it is
 not evidence of a new memory mechanism.
 
+Exact reproduction is scoped to the documented reference runtime. A full Linux
+replay found two last-decimal window-loss differences; retain that failure and
+investigate portability separately from the scientific result. See the
+[portability record](portability.md).
+
 ## Gates
 
 | Sequence | Work | Acceptance boundary |
@@ -45,8 +50,8 @@ not evidence of a new memory mechanism.
   handling in a successor implementation; preserve the canonical reference.
 - Add a documented installable reference package when reuse outside source
   checkouts is needed.
-- Generate visual reports tying error, topology, graph capacity and dormant
-  components to the same timeline.
+- Extend the retained visual report with individual-node occupancy and
+  dormancy measurements; component centroids alone do not establish occupancy.
 - Measure scaling before optimizing nearest-node selection, adjacency lookup,
   per-step invariant checks or retained fit events.
 - Keep GitHub code-owner review enforcement aligned with the charter's

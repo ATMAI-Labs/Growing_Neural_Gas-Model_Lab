@@ -1,6 +1,8 @@
 # Reproduce the frozen GNG experiments
 
-From the repository root, use Python 3.10 or newer and run:
+The launcher requires Python 3.10 or newer. Exact scientific replay also depends
+on the numerical runtime; see the observed [portability boundary](portability.md).
+From the repository root, run:
 
 ```bash
 python3 scripts/reproduce_experiments.py
@@ -77,6 +79,10 @@ requires an explicit change to both the registry and the command's allowlist.
 An exact mismatch on another Python version or architecture is a reproduction
 failure requiring investigation. Do not add a tolerance merely to make it pass.
 The runtime and hardware metadata remain available in freshly retained JSON.
+The full successor panel has two observed last-decimal mismatches on Linux;
+the documented CI reference is CPython 3.14.7 on macOS arm64. The exact comparison
+rule and frozen scientific evidence are unchanged. See [portability.md](portability.md)
+for the failure record, runtime scope, and remaining cross-platform work.
 
 ## Frozen references and future versions
 
