@@ -1,9 +1,10 @@
 # Capacity-controlled replicated drift and recurrence
 
-Status: **planned**. This document and runner define the protocol before the
-full experiment. Reduced smoke runs validate mechanics and are not results of
-the preregistered experiment. The protocol must be committed before running
-the complete 20-seed panel. The completed predecessor files are unchanged.
+Status: **complete**. The full 20-seed panel has run and independently reproduced
+every deterministic report field on this host. The protocol and runner were
+committed at `e7b5e91` before that run. Reduced smoke runs validate mechanics and
+are not results of the preregistered experiment. The completed predecessor
+files and canonical engine are unchanged.
 
 Tracking: [research issue 7](https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/issues/7).
 
@@ -144,8 +145,68 @@ for a cross-platform mechanics check. Its test compares every field except
 `environment`, including the runner hash, normalized state/data fingerprints,
 and all numerical measurements. It is not evidence for the full-panel hypothesis.
 
-Until the full panel has been run and reviewed, no result or research conclusion
-is claimed for this experiment.
+## Observed full-panel results
+
+The retained [numeric report](results/capacity-controlled-recurrence.json)
+contains all 20 seed outcomes, source hashes, configuration, window metrics,
+recovery measurements and declared limits. The full run used four processes
+and took 103.96 seconds locally; this is execution context, not an update-speed
+benchmark.
+
+| Return-to-A measurement | Prior A, then abrupt B | B-only history |
+| --- | ---: | ---: |
+| Mean squared quantization error across seeds | 0.006351514506 | 0.068621845192 |
+| Mean topographic error across seeds | 0.018481445313 | 0.010400390625 |
+| QE recovery confirmed within 4,096 return samples | 20 / 20 | 0 / 20 |
+| Joint QE/TE recovery confirmed within that horizon | 20 / 20 | 0 / 20 |
+
+The primary paired mean return-QE difference is **-0.062270330687**, with the
+preregistered descriptive 95% seed-bootstrap interval
+**[-0.064298691355, -0.060502391565]**. All 20 individual differences favor prior
+A exposure. All warmup models reached 100 live nodes, and the primary pair
+matched live-node capacity at every preupdate and postupdate step in both
+phases. No seeds were excluded and no capacity-shortfall flags occurred.
+
+The topographic-error difference is **+0.008081054688**: the prior-A arm has a
+worse topographic score despite its lower representation error. This tradeoff
+occurs in all 20 seeds and is retained. Prior-A QE confirmations range from 512 to 1,536 return samples;
+every B-only QE result is right-censored at 4,096 samples. These statements
+refer to confirmation, not retrospective onset.
+
+There is also an intervention cost. Mean QE on the preceding B phase is
+0.071686997180 for prior A versus 0.005476231261 for B-only history. As an
+explicitly **post hoc descriptive** calculation from the retained phase losses,
+mean QE across both equal-length B and A phases is 0.039019255843 versus
+0.037049038227, respectively. The prior-A arm is therefore about 5.32% worse
+on that combined summary. This is not the preregistered primary estimand and
+has no added statistical test; it prevents interpreting the return-only benefit
+as general adaptation superiority.
+
+An independent full rerun took 105.618 seconds on the same host and matched
+every deterministic field, excluding only `/environment`. Independent
+accounting reconstructed the seed-bootstrap interval, all capacity gates, and
+all recovery decisions from the retained windows. The golden smoke fixture
+also passed on GitHub's Linux runner. Full cross-platform replay is enforced
+by CI through the root registry; its live verdict belongs to the corresponding
+CI run, not to this frozen document.
+
+The stationary arm's mean return QE is 0.005300604800 and its mean return TE is
+0.012145996094. All stationary runs confirm both operational recovery criteria,
+providing a check on these snapshot-based tolerances. The secondary mean
+abrupt-minus-gradual intervention peak QE difference is 0.189692661729; the
+gradual arm has less target-B exposure and no B hold, as preregistered.
+
+These results support an effect of prior geometric training history in this
+specific translation/recurrence protocol at matched live-node capacity. Edge
+counts and learned geometry are not matched resources. No explicit matching,
+retrieval, semantic identity, or new memory mechanism has been demonstrated.
+Component centroids are summaries, not measurements of every member node's
+location or dormancy.
+
+The [visual report](results/report.html) shows the same source-backed results,
+including every seed and separate error, topology, and component timelines.
+
+![Full-panel overview](results/overview.png)
 
 ## Optional visual report
 

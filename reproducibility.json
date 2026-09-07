@@ -45,6 +45,27 @@
       "ignore_json_paths": [
         "/environment"
       ]
+    },
+    {
+      "id": "exp-20260907-8313df3e",
+      "directory": "labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence",
+      "entrypoint": "run.py",
+      "result": "results/capacity-controlled-recurrence.json",
+      "engine": "canonical-gng-v1",
+      "files": {
+        "labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/README.md": "41808eefc3c0358345c2947fcd79cd6947f693d7f6465fcc684d97270cfc1f6f",
+        "labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/experiment.json": "db454d62db5aab33a56a3a10164db5cef5b139b911836ce04e323b93efc987b0",
+        "labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/fixtures/smoke.json": "8eea4271beac640cc50376e3c8ed070377e37bf3396cc663eb557315b6cdccba",
+        "labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/render_report.py": "f89e5bbc1863cdf75e21ffd6b36ff310936a79bcc3e9ba5ad7c9c5bbc1479704",
+        "labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/requirements-report.txt": "61b4116150fac6f90cc8a8b5fca40f37d5007609f4b4c120efcf611c25081c15",
+        "labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/results/capacity-controlled-recurrence.json": "105e4cd8571820cf22079e82ba6fad9d515c0e2d64acc3835e66c85c194e2bc4",
+        "labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/results/overview.png": "5c6457f8dce30a16ffc9a14ae850d4528a98718c880ca5423c93058f6a50f6c4",
+        "labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/results/report.html": "cece72b807b86edb0e20d195a1aac85f245893e2d9d1ce527c8cb7d39e7b73b5",
+        "labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/run.py": "e8134fbb9b994c0636e84dfb1f97955ad7df47b9cf612a010b3e35cc10082747"
+      },
+      "ignore_json_paths": [
+        "/environment"
+      ]
     }
   ]
 }

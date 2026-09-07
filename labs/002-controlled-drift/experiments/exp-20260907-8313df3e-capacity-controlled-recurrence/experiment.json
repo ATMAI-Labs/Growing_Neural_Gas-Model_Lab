@@ -3,7 +3,7 @@
   "slug": "capacity-controlled-recurrence",
   "lab": "002-controlled-drift",
   "title": "Capacity-controlled replicated drift and recurrence",
-  "status": "planned",
+  "status": "complete",
   "owner": "@abrahamabel",
   "authors": ["@abrahamabel"],
   "hypothesis": "Under the unchanged canonical GNG parameter profile and matched training counts and node caps, prior A exposure will reduce mean return-A squared quantization error relative to B-only history across the fixed 20-seed synthetic panel. Realized-capacity mismatches limit capacity-isolated interpretation; topology and recurrence confirmation are reported separately.",

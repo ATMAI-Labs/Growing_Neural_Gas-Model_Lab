@@ -33,6 +33,16 @@ def render(report: dict, source: Path) -> tuple[str, bytes]:
     seed_ids = [row["seed_id"] for row in outcomes]
     differences = [row["comparisons"]["primary_return_qe_difference"] for row in outcomes]
     ci_low, ci_high = primary["ci95"]
+    intervention_means = {
+        arm: mean(row["arms"][arm]["phases"][0]["mean_qe"] for row in outcomes)
+        for arm in ("abrupt", "b_only")
+    }
+    two_phase_means = {
+        arm: mean(sum(phase["cumulative_qe"] for phase in row["arms"][arm]["phases"])
+                  / sum(phase["samples"] for phase in row["arms"][arm]["phases"])
+                  for row in outcomes)
+        for arm in ("abrupt", "b_only")
+    }
     mismatch_ids = primary["capacity_mismatch_seed_ids"]
     warmup_failures = primary["warmup_capacity_failure_seed_ids"]
     plt.rcParams.update({
@@ -136,12 +146,20 @@ body{{margin:0;background:#faf9f5;color:#24334b;font:17px/1.55 system-ui,sans-se
 <tr><td>Stationary reference</td><td>A</td><td>A</td><td>A</td></tr><tr><td>Prior A / abrupt B</td><td>A</td><td>B</td><td>A</td></tr>
 <tr><td>Prior A / gradual B</td><td>A</td><td>Ramp A → B</td><td>A</td></tr><tr><td>Prior B / B-only history</td><td>B</td><td>B</td><td>A</td></tr></table></div>
 <p>Warmup duration and total updates are matched. The warmup distribution is the treatment, so total lifetime B exposure differs. All three A-warm arms clone the same full model state. The gradual arm has no full-B hold and is a secondary tracking/history comparison.</p>
+<h2>The return result has an intervention cost</h2>
+<div class="scroll"><table><tr><th>Mean squared quantization error</th><th>Prior A / abrupt B</th><th>Prior B / B-only history</th></tr>
+<tr><td>Preceding B intervention</td><td>{metric(intervention_means["abrupt"])}</td><td>{metric(intervention_means["b_only"])}</td></tr>
+<tr><td>B and A phases together · post hoc descriptive</td><td>{metric(two_phase_means["abrupt"])}</td><td>{metric(two_phase_means["b_only"])}</td></tr></table></div>
+<p>The combined-phase mean is an explicitly post hoc description of the retained losses, not the preregistered primary estimand or a new statistical test. A return-only advantage does not establish better overall adaptation.</p>
 <figure>{svg}<figcaption>Lines average the same nonoverlapping window across seeds; the scatter retains individual seed differences. These panels summarize the JSON evidence and introduce no new statistical test.</figcaption></figure>
 <h2>Every seed and its recovery measurements</h2><p>Recovery cells show <strong>onset / confirmation</strong> in samples after A returns. Onset is assigned retrospectively; confirmation requires two consecutive qualifying windows. “Not confirmed” is retained censoring.</p>
 <div class="scroll"><table><tr><th>Seed</th><th>Δ return QE</th><th>Δ return TE</th><th>Return capacity mismatch steps</th><th>Prior-A QE onset / confirmation</th><th>Prior-B QE onset / confirmation</th></tr>{''.join(rows)}</table></div>
 <h2>Interpretation boundary</h2><ul><li>A lower return error supports an effect of prior training history under this protocol. It does not establish semantic identity, explicit concept matching or a new memory mechanism.</li><li>Representation error and topographic error answer different questions. Both remain visible even when their changes disagree.</li><li>Recovery bands are operational tolerances fixed from independent pre-change evaluation, not confidence bands. Stationary behavior shows their calibration limits.</li><li>The bootstrap resamples seed-level paired differences. Its interval is descriptive; there is no aggregate pass or multiple-comparison-adjusted superiority claim.</li></ul>
 <p class="muted">Source JSON SHA-256: <code>{digest}</code><br>Rendered with matplotlib {html.escape(matplotlib.__version__)}. The numerical experiment uses only the Python standard library. This report is a local static artifact; it makes no live-state claim.</p>
 </main></html>'''
+    # Matplotlib SVG path lines contain trailing spaces; keep generated text
+    # clean for repository whitespace checks without changing the drawing.
+    document = "\n".join(line.rstrip() for line in document.splitlines()) + "\n"
     return document, png_buffer.getvalue()
 
 

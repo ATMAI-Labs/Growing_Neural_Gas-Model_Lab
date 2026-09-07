@@ -35,6 +35,7 @@ before a later experiment proposes a mechanism intended to address it.
 | ID | Status | Purpose |
 | --- | --- | --- |
 | [`exp-20260727-eee720cf-frozen-baseline-drift`](experiments/exp-20260727-eee720cf-frozen-baseline-drift/) | Complete | Measure the frozen canonical baseline under controlled translation, rotation, density, and recurrence scenarios |
+| [`exp-20260907-8313df3e-capacity-controlled-recurrence`](experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/) | Complete | Replicate translation/recurrence across 20 paired seeds at matched live-node capacity, preserving return, topology and intervening-phase tradeoffs |
 
 The first experiment is linked to its completed predecessor,
 [`exp-20260727-ee260fe9-fritzke-baseline`](../001-canonical-gng/experiments/exp-20260727-ee260fe9-fritzke-baseline/).
@@ -72,3 +73,10 @@ begins while the canonical graph is still growing. Later phases therefore have
 more prototypes than the initial cold-start phase. A successor that seeks a
 causal adaptation or memory comparison must control capacity and repeat across
 a preregistered seed panel rather than rewriting this completed record.
+
+The capacity-controlled successor supplies that paired comparison. All 20
+prior-A histories improve return-A QE, but all have higher return TE; preceding
+B losses are also higher. A post hoc two-phase loss summary is worse for prior
+A on average. This motivates measuring the retention/adaptation tradeoff over
+longer multi-regime streams before choosing a mechanism. Full results and
+limits live in the successor record; the original diagnostic remains intact.
