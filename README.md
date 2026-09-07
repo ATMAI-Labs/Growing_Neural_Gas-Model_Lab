@@ -66,6 +66,17 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the short contribution guide.
 
 ## Current evidence
 
+To verify the recorded experiments without overwriting them:
+
+```bash
+python3 scripts/reproduce_experiments.py
+```
+
+The [reproduction guide](docs/reproduction.md) describes the frozen file
+registry, exact comparison rules, and how future engine versions preserve
+historical evidence. CI runs the full registered experiments as well as the
+unit tests.
+
 The canonical Fritzke baseline is reproduced in
 [`labs/001-canonical-gng`](labs/001-canonical-gng/) and its unchanged reference
 engine is promoted in [`src/atmai_gng`](src/atmai_gng/).
@@ -75,6 +86,14 @@ adaptation under translation, rotation, density reweighting, and A-B-A
 recurrence. It also preserves the important negative boundary: low return
 error coexisted with a dormant geometric component, and continuing node growth
 confounded the recurrence comparison. No semantic memory claim is made.
+
+## Next research question
+
+[Issue #7](https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/issues/7)
+tests whether prior geometric exposure improves recurrence under matched
+training duration, a common node budget, and paired samples across 20 seeds.
+The [roadmap](docs/roadmap.md) records the acceptance gates and separates this
+planned successor from the completed evidence.
 
 ## License
 
