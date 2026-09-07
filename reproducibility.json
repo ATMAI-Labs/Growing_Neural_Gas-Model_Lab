@@ -1,0 +1,50 @@
+{
+  "schema": "atmai.gng.reproducibility/v1",
+  "engines": {
+    "canonical-gng-v1": {
+      "path": "src/atmai_gng/gng.py",
+      "sha256": "e684e68c0e87a7664e7c5294647f3c09cdb939775e2d322321268b5c56d7ee10"
+    }
+  },
+  "experiments": [
+    {
+      "id": "exp-20260727-ee260fe9",
+      "directory": "labs/001-canonical-gng/experiments/exp-20260727-ee260fe9-fritzke-baseline",
+      "entrypoint": "run.py",
+      "result": "results/baseline.json",
+      "engine": "canonical-gng-v1",
+      "files": {
+        "labs/001-canonical-gng/experiments/exp-20260727-ee260fe9-fritzke-baseline/README.md": "11b6c0af3b2e0a0a71e467b5c6200ccc9e1a2440df31095010be742728be9d50",
+        "labs/001-canonical-gng/experiments/exp-20260727-ee260fe9-fritzke-baseline/experiment.json": "2ed70d60987401e0f6f345f7135380504d90a60f5e2381b353532fa7b78c5b77",
+        "labs/001-canonical-gng/experiments/exp-20260727-ee260fe9-fritzke-baseline/gng.py": "e684e68c0e87a7664e7c5294647f3c09cdb939775e2d322321268b5c56d7ee10",
+        "labs/001-canonical-gng/experiments/exp-20260727-ee260fe9-fritzke-baseline/results/baseline.json": "2dd3548ee91fc839f3d4c178c52fb01ed9603cca49c6e3e4eda3119868fc1439",
+        "labs/001-canonical-gng/experiments/exp-20260727-ee260fe9-fritzke-baseline/run.py": "f100ad8a483b2fde253a9dd71b5805d324f9c3819dc4e8c30edae025d0e2ace8"
+      },
+      "ignore_json_paths": [
+        "/environment",
+        "/timing_seconds",
+        "/tracemalloc_peak_bytes",
+        "/datasets/0/timing_seconds",
+        "/datasets/1/timing_seconds",
+        "/datasets/2/timing_seconds",
+        "/datasets/3/timing_seconds"
+      ]
+    },
+    {
+      "id": "exp-20260727-eee720cf",
+      "directory": "labs/002-controlled-drift/experiments/exp-20260727-eee720cf-frozen-baseline-drift",
+      "entrypoint": "run.py",
+      "result": "results/controlled-drift.json",
+      "engine": "canonical-gng-v1",
+      "files": {
+        "labs/002-controlled-drift/experiments/exp-20260727-eee720cf-frozen-baseline-drift/README.md": "590836d45392895a8169b47935b692cea2e690395c4889282c7bce15211e6522",
+        "labs/002-controlled-drift/experiments/exp-20260727-eee720cf-frozen-baseline-drift/experiment.json": "8ee97f9f718c9de9dd6df4dde6157cbd259d34f03c54ab2b284ddcb6a9c76fc9",
+        "labs/002-controlled-drift/experiments/exp-20260727-eee720cf-frozen-baseline-drift/results/controlled-drift.json": "af3b1965398b20ba58e6797dba48e3fa3e1bc4cb6e0d0412789aeaf679ab04ca",
+        "labs/002-controlled-drift/experiments/exp-20260727-eee720cf-frozen-baseline-drift/run.py": "532f75b9247ee36f5bd171386a81f6dee7d9e158d8b83a34726e317a4e5f6abc"
+      },
+      "ignore_json_paths": [
+        "/environment"
+      ]
+    }
+  ]
+}

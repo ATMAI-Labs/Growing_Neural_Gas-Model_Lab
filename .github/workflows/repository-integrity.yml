@@ -20,7 +20,7 @@ jobs:
   repository-integrity:
     name: Repository integrity
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 20
 
     steps:
       - name: Check out the proposed revision
@@ -36,3 +36,6 @@ jobs:
 
       - name: Run repository tests
         run: python3 -m unittest discover -s tests -p 'test_*.py'
+
+      - name: Reproduce registered experiments without changing retained evidence
+        run: python3 scripts/reproduce_experiments.py

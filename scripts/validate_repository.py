@@ -10,6 +10,20 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
+
+if __package__:
+    from .reproduce_experiments import (
+        ReproductionError,
+        load_registry,
+        verify_frozen_files,
+    )
+else:
+    from reproduce_experiments import (  # type: ignore[no-redef]
+        ReproductionError,
+        load_registry,
+        verify_frozen_files,
+    )
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
@@ -149,6 +163,22 @@ def valid_text(value: Any) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
 
+def valid_reference_url(value: Any) -> bool:
+    """Check reference syntax locally; network availability is not evidence."""
+
+    if not isinstance(value, str) or any(
+        char.isspace() or ord(char) < 32 or ord(char) == 127 for char in value
+    ):
+        return False
+    try:
+        parsed = urlsplit(value)
+        # Accessing port also rejects malformed or out-of-range ports.
+        _ = parsed.port
+        return parsed.scheme in {"http", "https"} and bool(parsed.hostname)
+    except ValueError:
+        return False
+
+
 def validate_owner(
     value: Any, path: Path, root: Path, findings: list[Finding]
 ) -> None:
@@ -181,7 +211,11 @@ def validate_authors(
 
 
 def validate_experiment(
-    directory: Path, lab_id: str, root: Path, findings: list[Finding]
+    directory: Path,
+    lab_id: str,
+    root: Path,
+    findings: list[Finding],
+    experiments: list[tuple[Path, dict[str, Any]]],
 ) -> None:
     relative = directory.relative_to(root)
     if not (directory / "README.md").is_file():
@@ -191,6 +225,7 @@ def validate_experiment(
     manifest = load_json(path, root, findings)
     if manifest is None:
         return
+    experiments.append((path, manifest))
     validate_fields(manifest, EXPERIMENT_FIELDS, path, root, findings)
 
     experiment_id = manifest.get("id")
@@ -208,7 +243,8 @@ def validate_experiment(
 
     if manifest.get("lab") != lab_id:
         add(findings, "EXP005", path.relative_to(root), "lab must match its parent")
-    if manifest.get("status") not in {
+    status = manifest.get("status")
+    if not isinstance(status, str) or status not in {
         "planned",
         "running",
         "complete",
@@ -227,15 +263,41 @@ def validate_experiment(
             )
     validate_owner(manifest.get("owner"), path, root, findings)
     validate_authors(manifest.get("authors"), path, root, findings)
-    if not isinstance(manifest.get("references"), list):
+    references = manifest.get("references")
+    if not isinstance(references, list):
         add(findings, "EXP008", path.relative_to(root), "references must be a list")
+    elif any(not valid_reference_url(reference) for reference in references):
+        add(
+            findings,
+            "EXP009",
+            path.relative_to(root),
+            "references must contain valid HTTP or HTTPS URL strings",
+        )
+    if status == "complete" and not references:
+        add(
+            findings,
+            "EXP010",
+            path.relative_to(root),
+            "complete experiments must have at least one reference URL",
+        )
 
     entrypoint = manifest.get("entrypoint")
+    if status == "complete" and entrypoint is None:
+        add(
+            findings,
+            "EXP015",
+            path.relative_to(root),
+            "complete experiments must have an executable entrypoint file",
+        )
     if entrypoint is not None:
         unsafe = (
-            not isinstance(entrypoint, str)
+            not valid_text(entrypoint)
+            or "\0" in entrypoint
             or Path(entrypoint).is_absolute()
             or ".." in Path(entrypoint).parts
+            or not (directory / entrypoint).resolve().is_relative_to(
+                directory.resolve()
+            )
         )
         if unsafe:
             add(
@@ -253,7 +315,12 @@ def validate_experiment(
             )
 
 
-def validate_lab(directory: Path, root: Path, findings: list[Finding]) -> int:
+def validate_lab(
+    directory: Path,
+    root: Path,
+    findings: list[Finding],
+    experiment_manifests: list[tuple[Path, dict[str, Any]]],
+) -> int:
     relative = directory.relative_to(root)
     if not LAB_ID.fullmatch(directory.name):
         add(findings, "LAB001", relative, "lab name must be NNN-kebab-case")
@@ -267,7 +334,8 @@ def validate_lab(directory: Path, root: Path, findings: list[Finding]) -> int:
         validate_fields(manifest, LAB_FIELDS, path, root, findings)
         if manifest.get("id") != directory.name:
             add(findings, "LAB003", path.relative_to(root), "id must match directory")
-        if manifest.get("status") not in {
+        status = manifest.get("status")
+        if not isinstance(status, str) or status not in {
             "planned",
             "active",
             "complete",
@@ -294,8 +362,90 @@ def validate_lab(directory: Path, root: Path, findings: list[Finding]) -> int:
     for experiment in sorted(experiments.iterdir()):
         if experiment.is_dir():
             count += 1
-            validate_experiment(experiment, lab_id, root, findings)
+            validate_experiment(
+                experiment, lab_id, root, findings, experiment_manifests
+            )
     return count
+
+
+def validate_experiment_evidence(
+    root: Path,
+    experiments: list[tuple[Path, dict[str, Any]]],
+    findings: list[Finding],
+) -> None:
+    """Resolve lineage and connect completed claims to frozen evidence."""
+
+    known_ids: set[str] = set()
+    for path, manifest in experiments:
+        experiment_id = manifest.get("id")
+        if not isinstance(experiment_id, str):
+            continue
+        if experiment_id in known_ids:
+            add(
+                findings,
+                "EXP017",
+                path.relative_to(root),
+                f"experiment id is not unique: {experiment_id}",
+            )
+        known_ids.add(experiment_id)
+
+    for path, manifest in experiments:
+        if "predecessors" not in manifest:
+            continue
+        predecessors = manifest["predecessors"]
+        if not isinstance(predecessors, list) or any(
+            not isinstance(item, str) or not EXPERIMENT_ID.fullmatch(item)
+            for item in predecessors
+        ):
+            add(
+                findings,
+                "EXP018",
+                path.relative_to(root),
+                "predecessors must be a list of experiment ids",
+            )
+            continue
+        if len(set(predecessors)) != len(predecessors):
+            add(
+                findings,
+                "EXP018",
+                path.relative_to(root),
+                "predecessors must not contain duplicate ids",
+            )
+        for predecessor in predecessors:
+            if predecessor == manifest.get("id"):
+                add(
+                    findings,
+                    "EXP019",
+                    path.relative_to(root),
+                    "an experiment cannot be its own predecessor",
+                )
+            elif predecessor not in known_ids:
+                add(
+                    findings,
+                    "EXP019",
+                    path.relative_to(root),
+                    f"predecessor does not resolve to an experiment: {predecessor}",
+                )
+
+    try:
+        registry = load_registry(root)
+    except ReproductionError as error:
+        add(findings, "REPRO001", "reproducibility.json", str(error))
+        return
+    for message in verify_frozen_files(root, registry):
+        add(findings, "REPRO002", "reproducibility.json", message)
+    registered = {experiment["id"] for experiment in registry["experiments"]}
+    for path, manifest in experiments:
+        experiment_id = manifest.get("id")
+        if manifest.get("status") == "complete" and (
+            not isinstance(experiment_id, str) or experiment_id not in registered
+        ):
+            add(
+                findings,
+                "EXP016",
+                path.relative_to(root),
+                "complete experiment is not registered in reproducibility.json",
+            )
 
 
 def validate_files(root: Path, findings: list[Finding]) -> None:
@@ -317,6 +467,7 @@ def validate_files(root: Path, findings: list[Finding]) -> None:
 def validate_repository(root: Path = REPOSITORY_ROOT) -> list[Finding]:
     root = root.resolve()
     findings: list[Finding] = []
+    experiments: list[tuple[Path, dict[str, Any]]] = []
     for required in REQUIRED_FILES:
         if not (root / required).is_file():
             add(findings, "ROOT001", required, "required public-repo file is missing")
@@ -331,11 +482,12 @@ def validate_repository(root: Path = REPOSITORY_ROOT) -> list[Finding]:
         for directory in sorted(labs.iterdir()):
             if directory.is_dir():
                 lab_count += 1
-                experiment_count += validate_lab(directory, root, findings)
+                experiment_count += validate_lab(directory, root, findings, experiments)
         if lab_count == 0:
             add(findings, "ROOT003", "labs", "at least one lab is required")
         if experiment_count == 0:
             add(findings, "ROOT004", "labs", "at least one experiment is required")
+    validate_experiment_evidence(root, experiments, findings)
     return sorted(set(findings))
 
 
