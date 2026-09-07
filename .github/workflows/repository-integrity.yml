@@ -34,6 +34,9 @@ jobs:
       - name: Validate the research-lab contract
         run: python3 scripts/validate_repository.py
 
+      - name: Check the derived research presentation
+        run: python3 scripts/build_research_report.py --check
+
       - name: Run repository tests
         run: python3 -m unittest discover -s tests -p 'test_*.py'
 
@@ -67,6 +70,9 @@ jobs:
 
       - name: Validate the research-lab contract
         run: python3 scripts/validate_repository.py
+
+      - name: Check the derived research presentation
+        run: python3 scripts/build_research_report.py --check
 
       - name: Run repository tests
         run: python3 -m unittest discover -s tests -p 'test_*.py'

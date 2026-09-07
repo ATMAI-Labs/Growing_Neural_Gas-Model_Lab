@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" class="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ATMAI research findings: 20 paired GNG seeds reveal a geometric recurrence benefit with measurable adaptation and topology costs.">
+<title>A return advantage. An adaptation cost. | ATMAI research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Doto:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>@@CSS@@</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to report</a>
+<header class="site-header wrap">
+  <a class="brand" href="https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab" aria-label="ATMAI Growing Neural Gas repository">ATMAI</a>
+  <span class="header-title">Growing Neural Gas Model Lab</span>
+  <a class="text-link" href="#evidence">Evidence register <span aria-hidden="true">↗</span></a>
+</header>
+<main id="main">
+<section class="hero wrap" aria-labelledby="report-title">
+  <div class="docket"><span class="micro">[ RESEARCH REPORT / 002 ]</span><span class="micro">2026-09-07 / SYNTHETIC EXPERIMENT</span></div>
+  <h1 id="report-title">A return advantage.<br><span class="outline">An adaptation cost.</span></h1>
+  <div class="hero-copy"><p>Prior experience improves geometric recurrence, while increasing the cost of learning the intervening distribution.</p><p>Synthetic geometry only. Semantic identity and explicit memory mechanisms were not evaluated.</p></div>
+  <div class="hero-actions"><a class="button primary" href="#timeline">Explore findings</a><a class="button" href="https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/blob/9a2441980b15ba5123aac6fa8bb60a5ba0d5bc90/labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/results/capacity-controlled-recurrence.json">Source data</a></div>
+  <dl class="readout-rail"><div><dt>Paired seeds</dt><dd>@@N@@</dd><p>Every outcome retained</p></div><div><dt>Nodes per arm</dt><dd>@@NODES@@</dd><p>Realized capacity matched</p></div><div><dt>Samples per phase</dt><dd>@@PHASE@@</dd><p>B intervention, then return A</p></div></dl>
+</section>
+
+<section class="result-band" aria-labelledby="result-heading">
+ <div class="wrap result-grid"><div><p class="micro">[ PRIMARY COMPARISON / OBSERVED ]</p><h2 id="result-heading">Lower return error.</h2><p class="big-measure">@@DELTA@@</p><p>Mean return-A error difference.<br>Prior-A history minus B-only history.</p><p class="interval mono">@@CI@@</p><p>Descriptive 95% seed-bootstrap interval.</p></div>
+ <div class="result-limit"><p class="micro">[ INTERPRETATION / COST ]</p><h2>With a tradeoff.</h2><p>All @@N@@ seeds have lower return representation error and higher return topographic error after prior A.</p><p>The preceding B phase costs more. Combined B + A representation loss is <strong>@@COST@@% higher</strong> for prior A.</p><p>The combined-phase summary is post hoc. The interval describes this fixed synthetic seed panel; it does not establish general adaptation superiority.</p></div></div>
+</section>
+
+<section class="section wrap" id="protocol" aria-labelledby="protocol-heading">
+ <div class="section-heading"><p class="micro">01 / EXPERIMENT DESIGN</p><h2 id="protocol-heading">Same budget.<br>Different histories.</h2></div>
+ <div class="two-col"><p>Each pair receives the same intervening B stream and identical return-A samples. Warmup lasts @@WARMUP@@ updates, with a common @@NODES@@-node cap and matching live-node counts at every scored step.</p><p>Warmup distribution is the treatment. Lifetime B exposure differs: @@PHASE@@ samples for prior A, 14,096 for B-only history. Edge counts and geometry may still differ.</p></div>
+ <div class="table-scroll" role="region" aria-label="Four experimental arms" tabindex="0"><table class="spec-table protocol-table"><thead><tr><th>Experimental arm</th><th>Warmup</th><th>Intervention</th><th>Return</th></tr></thead><tbody>
+ <tr><th scope="row">Prior A, abrupt B<span class="table-note">Primary treatment</span></th><td>A</td><td>B</td><td>A</td></tr>
+ <tr><th scope="row">B-only history<span class="table-note">Primary comparator</span></th><td>B</td><td>B</td><td>A</td></tr>
+ <tr><th scope="row">Prior A, gradual B<span class="table-note">Secondary comparison</span></th><td>A</td><td>Ramp A → B</td><td>A</td></tr>
+ <tr><th scope="row">Stationary A<span class="table-note">Reference</span></th><td>A</td><td>A</td><td>A</td></tr></tbody></table></div>
+ <p class="measure-note">The gradual arm has no full-B hold. All A-warm arms begin from copies of the same model state. The canonical algorithm is unchanged.</p>
+</section>
+
+<section class="ink section" id="timeline" aria-labelledby="timeline-heading">
+ <div class="wrap"><div class="section-heading"><p class="micro">02 / EVIDENCE INSTRUMENT</p><h2 id="timeline-heading">The timeline behind<br>the result.</h2></div>
+ <div class="two-col"><p>Inspect the same @@WINDOW@@-sample windows across all four arms. Switch between the panel mean and individual seeds.</p><p>Lower representation error and lower topographic error describe different properties. Keep both in view when assessing the return benefit.</p></div>
+ <div class="instrument-controls"><label>Measurement<select id="metric-select"><option value="0">Representation error (QE)</option><option value="1">Topographic error (TE)</option><option value="2">Connected components</option></select></label><label>Seed selection<select id="seed-select"><option value="all">Mean of all @@N@@ seeds</option>@@SEED_OPTIONS@@</select></label><p class="micro" id="chart-status" aria-live="polite">MEAN OF @@N@@ SEEDS / @@WINDOW@@-SAMPLE WINDOWS</p></div>
+ <figure class="instrument-figure"><svg id="timeline-chart" viewBox="0 0 1100 440" role="img" aria-labelledby="chart-title chart-desc"></svg><figcaption id="chart-caption">Representation error uses a logarithmic vertical axis. The phase boundary marks A returning.</figcaption></figure>
+ <div class="legend" aria-label="Chart legend"><span><i class="swatch abrupt"></i>Prior A, abrupt B</span><span><i class="swatch b_only"></i>B-only history</span><span><i class="swatch gradual"></i>Prior A, gradual B</span><span><i class="swatch stationary"></i>Stationary A</span></div>
+ <details class="chart-values"><summary>View plotted values</summary><div class="table-scroll" role="region" aria-label="Values shown in current chart" tabindex="0"><table class="spec-table"><caption id="values-caption">Values for the selected measurement and seeds</caption><thead><tr><th>Phase</th><th>Window end</th><th>Prior A, abrupt B</th><th>B-only history</th><th>Prior A, gradual B</th><th>Stationary A</th></tr></thead><tbody id="chart-values"></tbody></table></div></details>
+ <noscript><p>Enable JavaScript to explore the window-level timeline. The findings and every-seed table below remain available.</p></noscript>
+ <p class="measure-note">Curves describe recorded windows, with no fitted smoothing. Seed means are descriptive. Components alone do not measure individual-node occupancy or establish dormant memory.</p>
+ </div>
+</section>
+
+<section class="section wrap" id="findings" aria-labelledby="findings-heading">
+ <div class="section-heading"><p class="micro">03 / BENEFIT AND COST</p><h2 id="findings-heading">Read the whole<br>comparison.</h2></div>
+ <div class="table-scroll" role="region" aria-label="Representation and topology comparison" tabindex="0"><table class="spec-table findings-table"><thead><tr><th>Measurement · mean across seeds</th><th>Prior A, abrupt B</th><th>B-only history</th></tr></thead><tbody>@@COMPARISON_ROWS@@<tr><th scope="row">QE recovery confirmed by @@PHASE@@ samples</th><td>@@QE_RECOVERY_A@@ / @@N@@</td><td>@@QE_RECOVERY_B@@ / @@N@@</td></tr></tbody></table></div>
+ <div class="two-col findings-limits"><p><strong>Return benefit.</strong> Prior-A history lowers return representation error in every seed. Recovery requires two consecutive qualifying windows, evaluated against independent pre-change reference bands.</p><p><strong>Adaptation cost.</strong> Prior-A history has higher topology error in every seed and higher loss on the preceding B phase. The combined-phase calculation is post hoc and introduces no new statistical test.</p></div>
+ <div class="seed-heading"><h3>Every seed stays in the record.</h3><p>Recovery cells show retrospective onset / actual confirmation, in samples after A returns. “Not confirmed” means censored at @@PHASE@@ samples, not permanent failure.</p></div>
+ <div class="table-scroll" role="region" aria-label="All paired seed outcomes and recovery" tabindex="0"><table class="spec-table seed-table"><thead><tr><th>Seed</th><th>Δ return QE</th><th>Δ return TE</th><th>Prior-A QE<br>onset / confirmation</th><th>B-only QE<br>onset / confirmation</th></tr></thead><tbody>@@SEED_ROWS@@</tbody></table></div>
+ <p class="measure-note">Differences are prior A minus B-only. Negative QE favors prior A. Positive TE indicates more disconnected nearest-node pairs. All displayed metrics derive from the retained JSON; rounded display values do not replace it.</p>
+</section>
+
+<section class="section evidence-section" id="evidence" aria-labelledby="evidence-heading"><div class="wrap">
+ <div class="section-heading"><p class="micro">04 / EVIDENCE REGISTER</p><h2 id="evidence-heading">Verified, with<br>a runtime boundary.</h2></div>
+ <p>Recorded checks below refer to research revision <code>9a24419</code>, verified on 2026-09-07. This report is a presentation of retained evidence, with no live-state claim.</p>
+ <div class="evidence-rows"><article><span class="micro state">PASS / REFERENCE REPLAY</span><h3>Three exact reproductions.</h3><p>All three registered experiments matched on macOS 26.6.2 arm64 with CPython 3.14.7. Validation and all 57 tests also passed on Linux and macOS.</p><a class="text-link" href="https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/actions/runs/34085800521">Inspect successful run ↗</a></article>
+ <article><span class="micro state">FAIL / FULL LINUX REPLAY</span><h3>Two last-decimal differences.</h3><p>Ubuntu 24.04 x64 with CPython 3.12.3 differed in two window-loss fields by about 10<sup>−12</sup>. Every other compared field matched. The numerical cause is unresolved.</p><a class="text-link" href="https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/actions/runs/34084904065">Inspect failed run ↗</a></article></div>
+ <div class="source-register"><p class="micro">[ SOURCE / exp-20260907-8313df3e ]</p><p>Protocol committed at <code>e7b5e91</code> before the full run. Independent full replay matched all deterministic fields, excluding only environment metadata. Frozen runners, metrics and comparison rules remain intact.</p><p class="micro">JSON SHA-256</p><code class="digest">@@SOURCE_SHA@@</code></div>
+ </div></section>
+
+<section class="section wrap" id="roadmap" aria-labelledby="roadmap-heading"><div class="section-heading"><p class="micro">05 / NEXT RESEARCH QUESTION</p><h2 id="roadmap-heading">When does retention<br>become a burden?</h2></div>
+ <div class="roadmap"><article><span class="micro">NEXT / CHARACTERIZE</span><h3>Map the failure boundary.</h3><p>Test multiple novel and recurring regimes under a bounded budget. Measure individual-node occupancy to explain retention and adaptation costs.</p></article><article><span class="micro">THEN / INTERVENE</span><h3>Change one mechanism.</h3><p>Compare a targeted adaptation change with the frozen reference, including ablations, update latency and model-memory costs.</p></article><article><span class="micro">LATER / ESTABLISH</span><h3>Separate geometry and meaning.</h3><p>Introduce delayed-label protocols before explicit concept matching, rejection and retrieval. Measure false recall before promoting a capability.</p></article></div>
+ <div class="followups"><a class="text-link" href="https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/issues/10">Engine hardening · #10 ↗</a><a class="text-link" href="https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/issues/11">Runtime portability · #11 ↗</a></div>
+</section>
+</main>
+<footer class="wrap footer"><div><strong>ATMAI</strong><p>Growing Neural Gas Model Lab<br>Research presentation · Design language 1.2</p></div><p>Evidence first.<br>Failed results remain part of the record.</p><a class="text-link" href="#main">Back to top ↑</a></footer>
+<script type="application/json" id="report-data">@@DATA@@</script>
+<script>@@SCRIPT@@</script>
+</body>
+</html>
