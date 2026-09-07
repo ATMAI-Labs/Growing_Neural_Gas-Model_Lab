@@ -27,7 +27,8 @@ labs/
 ├── 001-canonical-gng/
 │   └── experiments/exp-20260727-ee260fe9-fritzke-baseline/
 └── 002-controlled-drift/
-    └── experiments/exp-20260727-eee720cf-frozen-baseline-drift/
+    ├── experiments/exp-20260727-eee720cf-frozen-baseline-drift/
+    └── experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/
 src/
 └── atmai_gng/
 ```
@@ -74,8 +75,11 @@ python3 scripts/reproduce_experiments.py
 
 The [reproduction guide](docs/reproduction.md) describes the frozen file
 registry, exact comparison rules, and how future engine versions preserve
-historical evidence. CI runs the full registered experiments as well as the
-unit tests.
+historical evidence. CI runs the full registered experiments on a documented
+macOS/Python reference runtime and requires repository tests on Linux as well.
+The [portability record](docs/portability.md) preserves two observed Linux
+last-decimal differences in the full successor panel; universal exact replay
+has not been established.
 
 The canonical Fritzke baseline is reproduced in
 [`labs/001-canonical-gng`](labs/001-canonical-gng/) and its unchanged reference
@@ -87,13 +91,23 @@ recurrence. It also preserves the important negative boundary: low return
 error coexisted with a dormant geometric component, and continuing node growth
 confounded the recurrence comparison. No semantic memory claim is made.
 
-## Next research question
+The [capacity-controlled successor](labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/)
+repeats translation and recurrence across 20 paired seeds. Prior-A history
+lowers return-A representation error in every seed while realized node counts
+match throughout. It also has higher return topographic error in every seed
+and greater representation loss on the preceding B phase. An explicitly
+post hoc combined B-and-A loss summary is about 5.32% worse for prior-A history.
+The result demonstrates a history-dependent tradeoff, not general superiority
+or an explicit memory mechanism. See the [visual report](labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/results/report.html).
+
+## Research roadmap
 
 [Issue #7](https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/issues/7)
-tests whether prior geometric exposure improves recurrence under matched
-training duration, a common node budget, and paired samples across 20 seeds.
-The [roadmap](docs/roadmap.md) records the acceptance gates and separates this
-planned successor from the completed evidence.
+tracks the reproduced capacity-controlled successor. The [roadmap](docs/roadmap.md)
+records the remaining gates: characterize retention and adaptation costs under
+multiple regimes, measure resources, test targeted interventions, then separate
+delayed labels and explicit concept memory. Reference-engine numerical
+hardening is tracked separately in [issue #10](https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/issues/10).
 
 ## License
 

@@ -1,13 +1,13 @@
 # Research roadmap
 
-The repository contains a canonical reference engine and two completed
+The repository contains a canonical reference engine and three completed
 synthetic experiments. Those establish a reproducible starting point. They do
 not establish drift detection, semantic identity, explicit concept memory, or
 a released ATMAI model.
 
 ## Current tranche
 
-The next research question is tracked in
+The capacity-controlled research question is tracked in
 [issue #7](https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/issues/7):
 does prior geometric exposure improve return-to-A performance when comparisons
 share the same resource budget, training duration, and input samples?
@@ -18,10 +18,19 @@ deterministic-result comparison in CI. Existing experiment bytes and the
 canonical engine remain unchanged. Future engine changes require separate
 versions and their own evidence, as described in [reproduction.md](reproduction.md).
 
-The successor protocol is committed before its full 20-seed run. Its initial
-scope is translation and recurrence; replicated rotation and density studies
-remain separate follow-ups. A shared node cap is not automatically matched
-realized capacity: any differences must be reported and limit interpretation.
+The successor protocol was committed before its full 20-seed run, and an
+independent full rerun matched all deterministic fields. Its scope is translation
+and recurrence; replicated rotation and density studies remain separate
+follow-ups. Realized capacity matched throughout. Prior-A history improved
+return QE in all seeds but worsened return TE and incurred greater preceding-B
+loss. The explicitly post hoc two-phase average was about 5.32% worse for prior
+A. This tradeoff is the basis for the next bounded-budget failure study; it is
+not evidence of a new memory mechanism.
+
+Exact reproduction is scoped to the documented reference runtime. A full Linux
+replay found two last-decimal window-loss differences; retain that failure and
+investigate portability separately from the scientific result. See the
+[portability record](portability.md).
 
 ## Gates
 
@@ -36,12 +45,13 @@ realized capacity: any differences must be reported and limit interpretation.
 
 ## Engineering follow-ups
 
-- Evaluate stricter integer parameter validation and overflow-safe state
+- [Issue #10](https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/issues/10)
+  evaluates stricter integer parameter validation and overflow-safe state
   handling in a successor implementation; preserve the canonical reference.
 - Add a documented installable reference package when reuse outside source
   checkouts is needed.
-- Generate visual reports tying error, topology, graph capacity and dormant
-  components to the same timeline.
+- Extend the retained visual report with individual-node occupancy and
+  dormancy measurements; component centroids alone do not establish occupancy.
 - Measure scaling before optimizing nearest-node selection, adjacency lookup,
   per-step invariant checks or retained fit events.
 - Keep GitHub code-owner review enforcement aligned with the charter's

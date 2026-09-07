@@ -1,0 +1,2 @@
+# Optional plotting only; the experiment and numerical replay use stdlib alone.
+matplotlib==3.11.1
