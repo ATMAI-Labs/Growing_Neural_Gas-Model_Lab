@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">ATMAI: a return advantage, an adaptation cost</title>
+<desc id="desc">20 paired seeds, 100 nodes. Prior A minus B-only return error: -0.062270, descriptive 95 percent interval -0.064299 to -0.060502. Return error improves in all seeds; topology error worsens in all seeds. Combined B and A error is 5.32 percent higher for prior A, a post hoc description.</desc>
+<style>text{font-family:Archivo,Arial,sans-serif;fill:#0a0a0a}.mono{font-family:'IBM Plex Mono',monospace}.light{fill:#f4f4f2}.muted{fill:#5c5c58}</style>
+<rect width="1200" height="700" fill="#f4f4f2"/>
+<path d="M48 90H1152M48 650H1152" stroke="#737370"/>
+<text x="48" y="60" font-size="27" font-weight="900">ATMAI</text>
+<text x="1152" y="57" text-anchor="end" font-size="15" class="mono">RESEARCH / GNG / 2026-09-07</text>
+<text x="48" y="164" font-size="16" class="mono">[ CAPACITY-CONTROLLED RECURRENCE ]</text>
+<text x="44" y="242" font-size="66" font-weight="800" letter-spacing="-3">A return advantage.</text>
+<text x="44" y="312" font-size="66" font-weight="800" letter-spacing="-3">An adaptation cost.</text>
+<text x="940" y="209" font-size="64" font-weight="800">20</text>
+<text x="940" y="239" font-size="16" class="mono">PAIRED SEEDS</text>
+<text x="940" y="300" font-size="48" font-weight="800">100</text>
+<text x="940" y="328" font-size="16" class="mono">NODES PER ARM</text>
+<rect x="48" y="360" width="1104" height="130" fill="#6c2bee"/>
+<text x="72" y="390" font-size="15" class="mono light">OBSERVED RETURN DIFFERENCE / PRIOR A MINUS B-ONLY</text>
+<text x="68" y="460" font-size="62" font-weight="800" class="light">-0.062270</text>
+<text x="640" y="422" font-size="17" class="light">Descriptive 95% seed-bootstrap interval</text>
+<text x="640" y="455" font-size="23" class="mono light">[-0.064299, -0.060502]</text>
+<text x="48" y="539" font-size="18" font-weight="700">Lower return representation error.</text>
+<text x="48" y="575" font-size="25" class="mono">0.006352 vs 0.068622</text>
+<text x="48" y="611" font-size="17" class="muted">Prior A vs B-only. Every seed retained.</text>
+<text x="650" y="539" font-size="18" font-weight="700">Higher topology error. Higher combined loss.</text>
+<text x="650" y="575" font-size="25" class="mono">+5.32% B + A error</text>
+<text x="650" y="611" font-size="17" class="muted">Combined-phase summary is post hoc.</text>
+<text x="48" y="679" font-size="15" class="mono">SYNTHETIC GEOMETRY / NO SEMANTIC MEMORY CLAIM</text>
+<text x="1152" y="679" text-anchor="end" font-size="15" class="mono">DESIGN LANGUAGE 1.2</text>
+</svg>

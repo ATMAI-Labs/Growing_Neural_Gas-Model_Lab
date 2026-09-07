@@ -98,7 +98,16 @@ match throughout. It also has higher return topographic error in every seed
 and greater representation loss on the preceding B phase. An explicitly
 post hoc combined B-and-A loss summary is about 5.32% worse for prior-A history.
 The result demonstrates a history-dependent tradeoff, not general superiority
-or an explicit memory mechanism. See the [visual report](labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/results/report.html).
+or an explicit memory mechanism.
+
+[![ATMAI research: a return advantage, an adaptation cost](docs/reports/recurrence-v1.2/overview.svg)](docs/reports/recurrence-v1.2/)
+
+Read the [current findings](docs/reports/recurrence-v1.2/) and open the
+[ATMAI v1.2 interactive report](docs/reports/recurrence-v1.2/index.html) in a
+browser to inspect individual seeds and metrics. The redesigned presentation
+derives from the same frozen evidence, including the unfavorable results and
+documented runtime limit. The [original visual artifact](labs/002-controlled-drift/experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/results/report.html)
+remains unchanged.
 
 ## Research roadmap
 
