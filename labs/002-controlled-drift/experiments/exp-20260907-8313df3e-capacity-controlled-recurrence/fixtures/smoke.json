@@ -1,0 +1,2974 @@
+{
+  "configuration": {
+    "bootstrap_resamples": 100,
+    "evaluation_points": 64,
+    "max_nodes": 6,
+    "phase_steps": 64,
+    "seed_ids": [
+      0,
+      1
+    ],
+    "warmup_steps": 600,
+    "window_size": 16
+  },
+  "configuration_kind": "smoke",
+  "environment": {
+    "implementation": "CPython",
+    "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "python": "3.14.7",
+    "workers": 1
+  },
+  "experiment_id": "exp-20260907-8313df3e",
+  "parameters": {
+    "error_decay": 0.995,
+    "error_reduction": 0.5,
+    "insertion_interval": 100,
+    "max_edge_age": 50,
+    "max_nodes": 6,
+    "neighbor_learning_rate": 0.006,
+    "winner_learning_rate": 0.2
+  },
+  "protocol": {
+    "arm_order": [
+      "stationary",
+      "abrupt",
+      "gradual",
+      "b_only"
+    ],
+    "capacity_comparison": "preupdate node count for every scored sample; first_mismatch_step is one-based within phase; also compare every postupdate count",
+    "distribution": {
+      "A": [
+        0.0,
+        0.0
+      ],
+      "B": [
+        2.5,
+        1.5
+      ],
+      "family": "isotropic Gaussian",
+      "sigma": 0.35
+    },
+    "failure_policy": "retain every seed and capacity shortfall; no extra warmup, replacement, or seed exclusion",
+    "fingerprint_normalization": "data and model-state fingerprints use canonical sorted-key JSON with floats rounded to 12 decimal places; source hashes remain byte-exact; within-run state checks use exact unrounded equality",
+    "gradual_intervention": "center fraction i/(phase_steps-1), including A and B endpoints, with no B hold",
+    "measurement": "squared quantization error and topographic missing-edge indicator before every update",
+    "phase_order": [
+      "intervention",
+      "return"
+    ],
+    "primary_estimand": "seed-mean return QE of abrupt A-history minus B-only history; negative favors prior A exposure",
+    "recovery": "two consecutive non-overlapping windows; onset is retrospective first-window start; confirmation is second-window end",
+    "rng_seed_formula": "202609070000 + 100 * seed_id + stream_id",
+    "rounding_decimal_places": 12,
+    "seed_ids": [
+      0,
+      1
+    ],
+    "stream_ids": {
+      "heldout": 4,
+      "initialization": 0,
+      "intervention": 2,
+      "return": 3,
+      "warmup": 1
+    },
+    "thresholds": "independent warm-A heldout QE times 1.25 and min(1, warm-A heldout TE + 0.02), shared across all arms"
+  },
+  "provenance": {
+    "engine_path": "src/atmai_gng/gng.py",
+    "engine_sha256": "e684e68c0e87a7664e7c5294647f3c09cdb939775e2d322321268b5c56d7ee10",
+    "engine_version": "canonical-gng-v1",
+    "issue": "https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/issues/7",
+    "predecessors": [
+      "exp-20260727-ee260fe9",
+      "exp-20260727-eee720cf"
+    ],
+    "runner_sha256": "e8134fbb9b994c0636e84dfb1f97955ad7df47b9cf612a010b3e35cc10082747"
+  },
+  "schema": "atmai.gng.capacity-controlled-recurrence/v1",
+  "seed_outcomes": [
+    {
+      "arms": {
+        "abrupt": {
+          "exposure": {
+            "intervention": {
+              "exact_A": 0,
+              "exact_B": 64,
+              "interpolated_centers": 0
+            },
+            "return": {
+              "A": 64,
+              "B": 0
+            },
+            "total_exact_A_samples": 664,
+            "total_exact_B_samples": 64,
+            "total_training_updates": 728,
+            "warmup": {
+              "A": 600,
+              "B": 0
+            }
+          },
+          "final_components": [
+            {
+              "centroid": [
+                0.525407678337,
+                0.390232271481
+              ],
+              "centroid_distance_to_a": 0.654472653486,
+              "centroid_distance_to_b": 2.265082613953,
+              "nearest_center": "A",
+              "node_count": 6
+            }
+          ],
+          "final_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "node_count": 6,
+            "samples_seen": 728,
+            "sha256": "8c7762af1ebabe25836f181cf5350d0d995cf7b20515a451b89cf63f112ea761"
+          },
+          "phases": [
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 1,
+                "inserted_nodes": 0,
+                "removed_edges": 2,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 34.18412424395,
+              "end_training_count": 664,
+              "final_components": [
+                {
+                  "centroid": [
+                    0.725203696542,
+                    0.383071723448
+                  ],
+                  "centroid_distance_to_a": 0.820161171224,
+                  "centroid_distance_to_b": 2.097005172557,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.534126941312,
+              "mean_te": 0.015625,
+              "name": "intervention",
+              "samples": 64,
+              "start_training_count": 600,
+              "topographic_misses": 1,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 21.098986713495,
+                  "end_sample": 16,
+                  "mean_qe": 1.318686669593,
+                  "mean_te": 0.0,
+                  "squared_loss": 21.098986713495,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 26.004561290419,
+                  "end_sample": 32,
+                  "mean_qe": 0.306598411058,
+                  "mean_te": 0.0,
+                  "squared_loss": 4.905574576924,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 30.257853646181,
+                  "end_sample": 48,
+                  "mean_qe": 0.265830772235,
+                  "mean_te": 0.0,
+                  "squared_loss": 4.253292355762,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 1,
+                    "inserted_nodes": 0,
+                    "removed_edges": 2,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 34.18412424395,
+                  "end_sample": 64,
+                  "mean_qe": 0.245391912361,
+                  "mean_te": 0.0625,
+                  "squared_loss": 3.926270597769,
+                  "start_sample": 48,
+                  "topographic_misses": 1
+                }
+              ]
+            },
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 1,
+                "inserted_nodes": 0,
+                "removed_edges": 1,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 6.617414759622,
+              "end_training_count": 728,
+              "final_components": [
+                {
+                  "centroid": [
+                    0.525407678337,
+                    0.390232271481
+                  ],
+                  "centroid_distance_to_a": 0.654472653486,
+                  "centroid_distance_to_b": 2.265082613953,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.103397105619,
+              "mean_te": 0.015625,
+              "name": "return",
+              "recovery": {
+                "joint": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                },
+                "qe": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                }
+              },
+              "samples": 64,
+              "start_training_count": 664,
+              "topographic_misses": 1,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.535885737828,
+                  "end_sample": 16,
+                  "mean_qe": 0.095992858614,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.535885737828,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 2.523649424115,
+                  "end_sample": 32,
+                  "mean_qe": 0.061735230393,
+                  "mean_te": 0.0,
+                  "squared_loss": 0.987763686287,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 1,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 4.943832240433,
+                  "end_sample": 48,
+                  "mean_qe": 0.15126142602,
+                  "mean_te": 0.0625,
+                  "squared_loss": 2.420182816318,
+                  "start_sample": 32,
+                  "topographic_misses": 1
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 6.617414759622,
+                  "end_sample": 64,
+                  "mean_qe": 0.104598907449,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.673582519189,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            }
+          ],
+          "starting_state": {
+            "component_count": 1,
+            "edge_count": 11,
+            "node_count": 6,
+            "samples_seen": 600,
+            "sha256": "43b01fc26bc7241f075016122e0e79285f3df31ae15f3257de228508e3290e67"
+          }
+        },
+        "b_only": {
+          "exposure": {
+            "intervention": {
+              "exact_A": 0,
+              "exact_B": 64,
+              "interpolated_centers": 0
+            },
+            "return": {
+              "A": 64,
+              "B": 0
+            },
+            "total_exact_A_samples": 64,
+            "total_exact_B_samples": 664,
+            "total_training_updates": 728,
+            "warmup": {
+              "A": 0,
+              "B": 600
+            }
+          },
+          "final_components": [
+            {
+              "centroid": [
+                1.762877030161,
+                1.085910275893
+              ],
+              "centroid_distance_to_a": 2.070491862037,
+              "centroid_distance_to_b": 0.845470621769,
+              "nearest_center": "B",
+              "node_count": 6
+            }
+          ],
+          "final_state": {
+            "component_count": 1,
+            "edge_count": 8,
+            "node_count": 6,
+            "samples_seen": 728,
+            "sha256": "2047b0cc38d88ce4302783d39653316b190991de22bc912cbe413220ff955e66"
+          },
+          "phases": [
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 1,
+                "inserted_nodes": 0,
+                "removed_edges": 2,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 4.948608561654,
+              "end_training_count": 664,
+              "final_components": [
+                {
+                  "centroid": [
+                    2.478731099198,
+                    1.517214770049
+                  ],
+                  "centroid_distance_to_a": 2.90620861615,
+                  "centroid_distance_to_b": 0.027362646969,
+                  "nearest_center": "B",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.077322008776,
+              "mean_te": 0.015625,
+              "name": "intervention",
+              "samples": 64,
+              "start_training_count": 600,
+              "topographic_misses": 1,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.401639097753,
+                  "end_sample": 16,
+                  "mean_qe": 0.08760244361,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.401639097753,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 2.410137692775,
+                  "end_sample": 32,
+                  "mean_qe": 0.063031162189,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.008498595021,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 3.459168001438,
+                  "end_sample": 48,
+                  "mean_qe": 0.065564394291,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.049030308663,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 1,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 4.948608561654,
+                  "end_sample": 64,
+                  "mean_qe": 0.093090035014,
+                  "mean_te": 0.0625,
+                  "squared_loss": 1.489440560217,
+                  "start_sample": 48,
+                  "topographic_misses": 1
+                }
+              ]
+            },
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 0,
+                "inserted_nodes": 0,
+                "removed_edges": 2,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 33.058238212002,
+              "end_training_count": 728,
+              "final_components": [
+                {
+                  "centroid": [
+                    1.762877030161,
+                    1.085910275893
+                  ],
+                  "centroid_distance_to_a": 2.070491862037,
+                  "centroid_distance_to_b": 0.845470621769,
+                  "nearest_center": "B",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.516534972063,
+              "mean_te": 0.0,
+              "name": "return",
+              "recovery": {
+                "joint": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                },
+                "qe": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                }
+              },
+              "samples": 64,
+              "start_training_count": 664,
+              "topographic_misses": 0,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 22.262044352224,
+                  "end_sample": 16,
+                  "mean_qe": 1.391377772014,
+                  "mean_te": 0.0,
+                  "squared_loss": 22.262044352224,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 24.447071729292,
+                  "end_sample": 32,
+                  "mean_qe": 0.136564211067,
+                  "mean_te": 0.0,
+                  "squared_loss": 2.185027377068,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 29.457389435898,
+                  "end_sample": 48,
+                  "mean_qe": 0.313144856663,
+                  "mean_te": 0.0,
+                  "squared_loss": 5.010317706607,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 33.058238212002,
+                  "end_sample": 64,
+                  "mean_qe": 0.225053048507,
+                  "mean_te": 0.0,
+                  "squared_loss": 3.600848776104,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            }
+          ],
+          "starting_state": {
+            "component_count": 1,
+            "edge_count": 11,
+            "node_count": 6,
+            "samples_seen": 600,
+            "sha256": "3197524183c04e1aaf5db16ceea9f5f9cf07f0ae199665121c6b139c0bf9524f"
+          }
+        },
+        "gradual": {
+          "exposure": {
+            "intervention": {
+              "exact_A": 1,
+              "exact_B": 1,
+              "interpolated_centers": 62
+            },
+            "return": {
+              "A": 64,
+              "B": 0
+            },
+            "total_exact_A_samples": 665,
+            "total_exact_B_samples": 1,
+            "total_training_updates": 728,
+            "warmup": {
+              "A": 600,
+              "B": 0
+            }
+          },
+          "final_components": [
+            {
+              "centroid": [
+                0.399738212101,
+                0.313008601471
+              ],
+              "centroid_distance_to_a": 0.507705645831,
+              "centroid_distance_to_b": 2.412477597386,
+              "nearest_center": "A",
+              "node_count": 6
+            }
+          ],
+          "final_state": {
+            "component_count": 1,
+            "edge_count": 9,
+            "node_count": 6,
+            "samples_seen": 728,
+            "sha256": "8f136ec7c1823f39ff27d27498ade12881ab5c71261578c553536fffa8621c0f"
+          },
+          "phases": [
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 0,
+                "inserted_nodes": 0,
+                "removed_edges": 1,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 15.140438445719,
+              "end_training_count": 664,
+              "final_components": [
+                {
+                  "centroid": [
+                    0.57212100879,
+                    0.307100848986
+                  ],
+                  "centroid_distance_to_a": 0.649333027149,
+                  "centroid_distance_to_b": 2.267096334353,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.236569350714,
+              "mean_te": 0.0,
+              "name": "intervention",
+              "samples": 64,
+              "start_training_count": 600,
+              "topographic_misses": 0,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.370443435419,
+                  "end_sample": 16,
+                  "mean_qe": 0.085652714714,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.370443435419,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 5.597782883392,
+                  "end_sample": 32,
+                  "mean_qe": 0.264208715498,
+                  "mean_te": 0.0,
+                  "squared_loss": 4.227339447973,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 10.466776292978,
+                  "end_sample": 48,
+                  "mean_qe": 0.304312088099,
+                  "mean_te": 0.0,
+                  "squared_loss": 4.868993409585,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 15.140438445719,
+                  "end_sample": 64,
+                  "mean_qe": 0.292103884546,
+                  "mean_te": 0.0,
+                  "squared_loss": 4.673662152741,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            },
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 1,
+                "inserted_nodes": 0,
+                "removed_edges": 2,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 5.65271192648,
+              "end_training_count": 728,
+              "final_components": [
+                {
+                  "centroid": [
+                    0.399738212101,
+                    0.313008601471
+                  ],
+                  "centroid_distance_to_a": 0.507705645831,
+                  "centroid_distance_to_b": 2.412477597386,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.088323623851,
+              "mean_te": 0.015625,
+              "name": "return",
+              "recovery": {
+                "joint": {
+                  "censored": false,
+                  "confirmation_samples": 32,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": 0
+                },
+                "qe": {
+                  "censored": false,
+                  "confirmation_samples": 32,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": 0
+                }
+              },
+              "samples": 64,
+              "start_training_count": 664,
+              "topographic_misses": 1,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.397950599385,
+                  "end_sample": 16,
+                  "mean_qe": 0.087371912462,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.397950599385,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 1,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 2.387834614504,
+                  "end_sample": 32,
+                  "mean_qe": 0.061867750945,
+                  "mean_te": 0.0625,
+                  "squared_loss": 0.989884015119,
+                  "start_sample": 16,
+                  "topographic_misses": 1
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 4.411066617157,
+                  "end_sample": 48,
+                  "mean_qe": 0.126452000166,
+                  "mean_te": 0.0,
+                  "squared_loss": 2.023232002653,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 5.65271192648,
+                  "end_sample": 64,
+                  "mean_qe": 0.077602831833,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.241645309324,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            }
+          ],
+          "starting_state": {
+            "component_count": 1,
+            "edge_count": 11,
+            "node_count": 6,
+            "samples_seen": 600,
+            "sha256": "43b01fc26bc7241f075016122e0e79285f3df31ae15f3257de228508e3290e67"
+          }
+        },
+        "stationary": {
+          "exposure": {
+            "intervention": {
+              "exact_A": 64,
+              "exact_B": 0,
+              "interpolated_centers": 0
+            },
+            "return": {
+              "A": 64,
+              "B": 0
+            },
+            "total_exact_A_samples": 728,
+            "total_exact_B_samples": 0,
+            "total_training_updates": 728,
+            "warmup": {
+              "A": 600,
+              "B": 0
+            }
+          },
+          "final_components": [
+            {
+              "centroid": [
+                -0.063069254844,
+                0.059045976579
+              ],
+              "centroid_distance_to_a": 0.086395360157,
+              "centroid_distance_to_b": 2.940352445327,
+              "nearest_center": "A",
+              "node_count": 6
+            }
+          ],
+          "final_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "node_count": 6,
+            "samples_seen": 728,
+            "sha256": "e00b3b5e4b279783b93c8e9ec630b3f3f62c42c82737b19760f2e17e437394ad"
+          },
+          "phases": [
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 1,
+                "inserted_nodes": 0,
+                "removed_edges": 2,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 4.948608561654,
+              "end_training_count": 664,
+              "final_components": [
+                {
+                  "centroid": [
+                    -0.021268900802,
+                    0.017214770049
+                  ],
+                  "centroid_distance_to_a": 0.027362646969,
+                  "centroid_distance_to_b": 2.924969898702,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.077322008776,
+              "mean_te": 0.015625,
+              "name": "intervention",
+              "samples": 64,
+              "start_training_count": 600,
+              "topographic_misses": 1,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.401639097753,
+                  "end_sample": 16,
+                  "mean_qe": 0.08760244361,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.401639097753,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 2.410137692775,
+                  "end_sample": 32,
+                  "mean_qe": 0.063031162189,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.008498595021,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 3.459168001438,
+                  "end_sample": 48,
+                  "mean_qe": 0.065564394291,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.049030308663,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 1,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 4.948608561654,
+                  "end_sample": 64,
+                  "mean_qe": 0.093090035014,
+                  "mean_te": 0.0625,
+                  "squared_loss": 1.489440560217,
+                  "start_sample": 48,
+                  "topographic_misses": 1
+                }
+              ]
+            },
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 0,
+                "inserted_nodes": 0,
+                "removed_edges": 0,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 3.818645980815,
+              "end_training_count": 728,
+              "final_components": [
+                {
+                  "centroid": [
+                    -0.063069254844,
+                    0.059045976579
+                  ],
+                  "centroid_distance_to_a": 0.086395360157,
+                  "centroid_distance_to_b": 2.940352445327,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.05966634345,
+              "mean_te": 0.0,
+              "name": "return",
+              "recovery": {
+                "joint": {
+                  "censored": false,
+                  "confirmation_samples": 32,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": 0
+                },
+                "qe": {
+                  "censored": false,
+                  "confirmation_samples": 32,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": 0
+                }
+              },
+              "samples": 64,
+              "start_training_count": 664,
+              "topographic_misses": 0,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.173596951598,
+                  "end_sample": 16,
+                  "mean_qe": 0.073349809475,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.173596951598,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.71998374257,
+                  "end_sample": 32,
+                  "mean_qe": 0.034149174436,
+                  "mean_te": 0.0,
+                  "squared_loss": 0.546386790971,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 3.009073596939,
+                  "end_sample": 48,
+                  "mean_qe": 0.080568115898,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.289089854369,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 3.818645980815,
+                  "end_sample": 64,
+                  "mean_qe": 0.050598273992,
+                  "mean_te": 0.0,
+                  "squared_loss": 0.809572383876,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            }
+          ],
+          "starting_state": {
+            "component_count": 1,
+            "edge_count": 11,
+            "node_count": 6,
+            "samples_seen": 600,
+            "sha256": "43b01fc26bc7241f075016122e0e79285f3df31ae15f3257de228508e3290e67"
+          }
+        }
+      },
+      "capacity_limits_capacity_isolated_interpretation": false,
+      "comparisons": {
+        "abrupt_minus_gradual_peak_intervention_qe": 1.014374581494,
+        "primary_capacity_by_phase": {
+          "intervention": {
+            "compared_steps": 64,
+            "end_counts": [
+              6,
+              6
+            ],
+            "exactly_matched": true,
+            "first_mismatch_step": null,
+            "first_postupdate_mismatch_step": null,
+            "mismatched_steps": 0,
+            "postupdate_mismatched_steps": 0,
+            "start_counts": [
+              6,
+              6
+            ]
+          },
+          "return": {
+            "compared_steps": 64,
+            "end_counts": [
+              6,
+              6
+            ],
+            "exactly_matched": true,
+            "first_mismatch_step": null,
+            "first_postupdate_mismatch_step": null,
+            "mismatched_steps": 0,
+            "postupdate_mismatched_steps": 0,
+            "start_counts": [
+              6,
+              6
+            ]
+          }
+        },
+        "primary_return_qe_difference": -0.413137866443,
+        "primary_return_te_difference": 0.015625,
+        "secondary_abrupt_gradual_capacity_by_phase": {
+          "intervention": {
+            "compared_steps": 64,
+            "end_counts": [
+              6,
+              6
+            ],
+            "exactly_matched": true,
+            "first_mismatch_step": null,
+            "first_postupdate_mismatch_step": null,
+            "mismatched_steps": 0,
+            "postupdate_mismatched_steps": 0,
+            "start_counts": [
+              6,
+              6
+            ]
+          },
+          "return": {
+            "compared_steps": 64,
+            "end_counts": [
+              6,
+              6
+            ],
+            "exactly_matched": true,
+            "first_mismatch_step": null,
+            "first_postupdate_mismatch_step": null,
+            "mismatched_steps": 0,
+            "postupdate_mismatched_steps": 0,
+            "start_counts": [
+              6,
+              6
+            ]
+          }
+        }
+      },
+      "reference": {
+        "band_kind": "operational tolerances, not confidence bands",
+        "evaluation_points": 64,
+        "heldout_mean_qe": 0.07393592159,
+        "heldout_te": 0.09375,
+        "qe_threshold": 0.092419901987,
+        "state_sha256_before_and_after": "43b01fc26bc7241f075016122e0e79285f3df31ae15f3257de228508e3290e67",
+        "te_threshold": 0.11375
+      },
+      "seed_id": 0,
+      "stream_seeds": {
+        "heldout": 202609070004,
+        "initialization": 202609070000,
+        "intervention": 202609070002,
+        "return": 202609070003,
+        "warmup": 202609070001
+      },
+      "stream_sha256": {
+        "heldout_A": "5ab9c56ed332202eac6e1988e9b965361cd8c934e9ae367f69ce8e43ad535808",
+        "initialization_base_noise": "4d9f4d7976377f8b79855e45ddf4db2a176ebc3ba469079ea86fc2092286f36f",
+        "intervention_base_noise": "6f8241cabfd25aeb8d111f3709fec0b49b294739a2434d7623668e80fa3c7481",
+        "shared_return_signals": "41549cccfabd58e13f2f154916ac1ff9b72b069866c8138cee08c01097594421",
+        "warmup_base_noise": "16d43869d1e2cff5c717c8cb46dcd1c5137bf5afa5719800412bcd4a012b033f"
+      },
+      "warmup": {
+        "a": {
+          "component_count": 1,
+          "edge_count": 11,
+          "node_count": 6,
+          "reached_requested_capacity": true,
+          "samples_seen": 600,
+          "sha256": "43b01fc26bc7241f075016122e0e79285f3df31ae15f3257de228508e3290e67"
+        },
+        "a_b_counts_equal": true,
+        "b": {
+          "component_count": 1,
+          "edge_count": 11,
+          "node_count": 6,
+          "reached_requested_capacity": true,
+          "samples_seen": 600,
+          "sha256": "3197524183c04e1aaf5db16ceea9f5f9cf07f0ae199665121c6b139c0bf9524f"
+        },
+        "starting_capacity_failure": false
+      }
+    },
+    {
+      "arms": {
+        "abrupt": {
+          "exposure": {
+            "intervention": {
+              "exact_A": 0,
+              "exact_B": 64,
+              "interpolated_centers": 0
+            },
+            "return": {
+              "A": 64,
+              "B": 0
+            },
+            "total_exact_A_samples": 664,
+            "total_exact_B_samples": 64,
+            "total_training_updates": 728,
+            "warmup": {
+              "A": 600,
+              "B": 0
+            }
+          },
+          "final_components": [
+            {
+              "centroid": [
+                0.547529191678,
+                0.348850911703
+              ],
+              "centroid_distance_to_a": 0.649218895548,
+              "centroid_distance_to_b": 2.26655828975,
+              "nearest_center": "A",
+              "node_count": 6
+            }
+          ],
+          "final_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "node_count": 6,
+            "samples_seen": 728,
+            "sha256": "3ebeab3a393aec64c74c1180028417efedf07e9b1ea986a234ec4d592329ece8"
+          },
+          "phases": [
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 0,
+                "inserted_nodes": 0,
+                "removed_edges": 1,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 43.182995305465,
+              "end_training_count": 664,
+              "final_components": [
+                {
+                  "centroid": [
+                    0.742184519204,
+                    0.512983509108
+                  ],
+                  "centroid_distance_to_a": 0.902213910978,
+                  "centroid_distance_to_b": 2.015965480314,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.674734301648,
+              "mean_te": 0.0,
+              "name": "intervention",
+              "samples": 64,
+              "start_training_count": 600,
+              "topographic_misses": 0,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 27.449163306014,
+                  "end_sample": 16,
+                  "mean_qe": 1.715572706626,
+                  "mean_te": 0.0,
+                  "squared_loss": 27.449163306014,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 33.020743626789,
+                  "end_sample": 32,
+                  "mean_qe": 0.348223770048,
+                  "mean_te": 0.0,
+                  "squared_loss": 5.571580320774,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 37.566542895679,
+                  "end_sample": 48,
+                  "mean_qe": 0.284112454306,
+                  "mean_te": 0.0,
+                  "squared_loss": 4.54579926889,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 43.182995305465,
+                  "end_sample": 64,
+                  "mean_qe": 0.351028275612,
+                  "mean_te": 0.0,
+                  "squared_loss": 5.616452409786,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            },
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 1,
+                "inserted_nodes": 0,
+                "removed_edges": 0,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 6.389644855794,
+              "end_training_count": 728,
+              "final_components": [
+                {
+                  "centroid": [
+                    0.547529191678,
+                    0.348850911703
+                  ],
+                  "centroid_distance_to_a": 0.649218895548,
+                  "centroid_distance_to_b": 2.26655828975,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.099838200872,
+              "mean_te": 0.015625,
+              "name": "return",
+              "recovery": {
+                "joint": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                },
+                "qe": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                }
+              },
+              "samples": 64,
+              "start_training_count": 664,
+              "topographic_misses": 1,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 1,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.984814990497,
+                  "end_sample": 16,
+                  "mean_qe": 0.124050936906,
+                  "mean_te": 0.0625,
+                  "squared_loss": 1.984814990497,
+                  "start_sample": 0,
+                  "topographic_misses": 1
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 3.739853874506,
+                  "end_sample": 32,
+                  "mean_qe": 0.109689930251,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.75503888401,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 5.213024985288,
+                  "end_sample": 48,
+                  "mean_qe": 0.092073194424,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.473171110782,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 6.389644855794,
+                  "end_sample": 64,
+                  "mean_qe": 0.073538741907,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.176619870506,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            }
+          ],
+          "starting_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "node_count": 6,
+            "samples_seen": 600,
+            "sha256": "bd92a715f7402c583d05b25e350a8f9276a6134101208958ab85a0177f367fbf"
+          }
+        },
+        "b_only": {
+          "exposure": {
+            "intervention": {
+              "exact_A": 0,
+              "exact_B": 64,
+              "interpolated_centers": 0
+            },
+            "return": {
+              "A": 64,
+              "B": 0
+            },
+            "total_exact_A_samples": 64,
+            "total_exact_B_samples": 664,
+            "total_training_updates": 728,
+            "warmup": {
+              "A": 0,
+              "B": 600
+            }
+          },
+          "final_components": [
+            {
+              "centroid": [
+                1.738310710317,
+                1.065608487881
+              ],
+              "centroid_distance_to_a": 2.038932459658,
+              "centroid_distance_to_b": 0.876850363414,
+              "nearest_center": "B",
+              "node_count": 6
+            }
+          ],
+          "final_state": {
+            "component_count": 1,
+            "edge_count": 9,
+            "node_count": 6,
+            "samples_seen": 728,
+            "sha256": "9dfcb63c85e6f5b0d5f711e0f5bcb58baa4f9d18f924dd8d62b4135103a3afbe"
+          },
+          "phases": [
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 0,
+                "inserted_nodes": 0,
+                "removed_edges": 0,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 5.140475626485,
+              "end_training_count": 664,
+              "final_components": [
+                {
+                  "centroid": [
+                    2.455466013736,
+                    1.513216656163
+                  ],
+                  "centroid_distance_to_a": 2.88429159294,
+                  "centroid_distance_to_b": 0.046453804286,
+                  "nearest_center": "B",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.080319931664,
+              "mean_te": 0.0,
+              "name": "intervention",
+              "samples": 64,
+              "start_training_count": 600,
+              "topographic_misses": 0,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.394825270235,
+                  "end_sample": 16,
+                  "mean_qe": 0.08717657939,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.394825270235,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 2.577207506993,
+                  "end_sample": 32,
+                  "mean_qe": 0.073898889797,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.182382236758,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 3.225643557684,
+                  "end_sample": 48,
+                  "mean_qe": 0.040527253168,
+                  "mean_te": 0.0,
+                  "squared_loss": 0.64843605069,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 5.140475626485,
+                  "end_sample": 64,
+                  "mean_qe": 0.1196770043,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.914832068802,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            },
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 0,
+                "inserted_nodes": 0,
+                "removed_edges": 1,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 33.704036192253,
+              "end_training_count": 728,
+              "final_components": [
+                {
+                  "centroid": [
+                    1.738310710317,
+                    1.065608487881
+                  ],
+                  "centroid_distance_to_a": 2.038932459658,
+                  "centroid_distance_to_b": 0.876850363414,
+                  "nearest_center": "B",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.526625565504,
+              "mean_te": 0.0,
+              "name": "return",
+              "recovery": {
+                "joint": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                },
+                "qe": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                }
+              },
+              "samples": 64,
+              "start_training_count": 664,
+              "topographic_misses": 0,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 19.680759407327,
+                  "end_sample": 16,
+                  "mean_qe": 1.230047462958,
+                  "mean_te": 0.0,
+                  "squared_loss": 19.680759407327,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 24.818591014367,
+                  "end_sample": 32,
+                  "mean_qe": 0.32111447544,
+                  "mean_te": 0.0,
+                  "squared_loss": 5.13783160704,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 1,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 30.125258465334,
+                  "end_sample": 48,
+                  "mean_qe": 0.331666715685,
+                  "mean_te": 0.0,
+                  "squared_loss": 5.306667450967,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 33.704036192253,
+                  "end_sample": 64,
+                  "mean_qe": 0.223673607932,
+                  "mean_te": 0.0,
+                  "squared_loss": 3.578777726919,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            }
+          ],
+          "starting_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "node_count": 6,
+            "samples_seen": 600,
+            "sha256": "7738277ad9a1cd0f3f6e6a5cd58df3df89a0a1f6ddf21c0b0c2b56aed69bb2d0"
+          }
+        },
+        "gradual": {
+          "exposure": {
+            "intervention": {
+              "exact_A": 1,
+              "exact_B": 1,
+              "interpolated_centers": 62
+            },
+            "return": {
+              "A": 64,
+              "B": 0
+            },
+            "total_exact_A_samples": 665,
+            "total_exact_B_samples": 1,
+            "total_training_updates": 728,
+            "warmup": {
+              "A": 600,
+              "B": 0
+            }
+          },
+          "final_components": [
+            {
+              "centroid": [
+                0.539620310984,
+                0.344658092465
+              ],
+              "centroid_distance_to_a": 0.640296244506,
+              "centroid_distance_to_b": 2.275500702793,
+              "nearest_center": "A",
+              "node_count": 6
+            }
+          ],
+          "final_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "node_count": 6,
+            "samples_seen": 728,
+            "sha256": "db9952d8bd046d98b463089249d469c0b3daa142cfe20f0cedb866c0cf32eadb"
+          },
+          "phases": [
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 0,
+                "inserted_nodes": 0,
+                "removed_edges": 0,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 19.385733331556,
+              "end_training_count": 664,
+              "final_components": [
+                {
+                  "centroid": [
+                    0.666360415349,
+                    0.48076322552
+                  ],
+                  "centroid_distance_to_a": 0.82168697334,
+                  "centroid_distance_to_b": 2.097874574146,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.302902083306,
+              "mean_te": 0.0,
+              "name": "intervention",
+              "samples": 64,
+              "start_training_count": 600,
+              "topographic_misses": 0,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 3.165652065186,
+                  "end_sample": 16,
+                  "mean_qe": 0.197853254074,
+                  "mean_te": 0.0,
+                  "squared_loss": 3.165652065186,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 7.337857383083,
+                  "end_sample": 32,
+                  "mean_qe": 0.260762832369,
+                  "mean_te": 0.0,
+                  "squared_loss": 4.172205317897,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 13.876769985833,
+                  "end_sample": 48,
+                  "mean_qe": 0.408682037672,
+                  "mean_te": 0.0,
+                  "squared_loss": 6.53891260275,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 19.385733331556,
+                  "end_sample": 64,
+                  "mean_qe": 0.344310209108,
+                  "mean_te": 0.0,
+                  "squared_loss": 5.508963345722,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            },
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 0,
+                "inserted_nodes": 0,
+                "removed_edges": 0,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 5.48036064545,
+              "end_training_count": 728,
+              "final_components": [
+                {
+                  "centroid": [
+                    0.539620310984,
+                    0.344658092465
+                  ],
+                  "centroid_distance_to_a": 0.640296244506,
+                  "centroid_distance_to_b": 2.275500702793,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.085630635085,
+              "mean_te": 0.0,
+              "name": "return",
+              "recovery": {
+                "joint": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                },
+                "qe": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                }
+              },
+              "samples": 64,
+              "start_training_count": 664,
+              "topographic_misses": 0,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.142023233376,
+                  "end_sample": 16,
+                  "mean_qe": 0.071376452086,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.142023233376,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 2.691493478459,
+                  "end_sample": 32,
+                  "mean_qe": 0.096841890318,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.549470245084,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 4.274753325607,
+                  "end_sample": 48,
+                  "mean_qe": 0.098953740447,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.583259847148,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 5.48036064545,
+                  "end_sample": 64,
+                  "mean_qe": 0.07535045749,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.205607319843,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            }
+          ],
+          "starting_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "node_count": 6,
+            "samples_seen": 600,
+            "sha256": "bd92a715f7402c583d05b25e350a8f9276a6134101208958ab85a0177f367fbf"
+          }
+        },
+        "stationary": {
+          "exposure": {
+            "intervention": {
+              "exact_A": 64,
+              "exact_B": 0,
+              "interpolated_centers": 0
+            },
+            "return": {
+              "A": 64,
+              "B": 0
+            },
+            "total_exact_A_samples": 728,
+            "total_exact_B_samples": 0,
+            "total_training_updates": 728,
+            "warmup": {
+              "A": 600,
+              "B": 0
+            }
+          },
+          "final_components": [
+            {
+              "centroid": [
+                -0.001157737706,
+                -0.069901582036
+              ],
+              "centroid_distance_to_a": 0.069911168834,
+              "centroid_distance_to_b": 2.953029123826,
+              "nearest_center": "A",
+              "node_count": 6
+            }
+          ],
+          "final_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "node_count": 6,
+            "samples_seen": 728,
+            "sha256": "badd4994a8eb7870358b8e6c37a2fff39d319b2fd221353478d14a2c47f490c9"
+          },
+          "phases": [
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 0,
+                "inserted_nodes": 0,
+                "removed_edges": 0,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 5.140475626485,
+              "end_training_count": 664,
+              "final_components": [
+                {
+                  "centroid": [
+                    -0.044533986264,
+                    0.013216656163
+                  ],
+                  "centroid_distance_to_a": 0.046453804286,
+                  "centroid_distance_to_b": 2.947062591592,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.080319931664,
+              "mean_te": 0.0,
+              "name": "intervention",
+              "samples": 64,
+              "start_training_count": 600,
+              "topographic_misses": 0,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.394825270235,
+                  "end_sample": 16,
+                  "mean_qe": 0.08717657939,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.394825270235,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 2.577207506993,
+                  "end_sample": 32,
+                  "mean_qe": 0.073898889797,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.182382236758,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 3.225643557684,
+                  "end_sample": 48,
+                  "mean_qe": 0.040527253168,
+                  "mean_te": 0.0,
+                  "squared_loss": 0.64843605069,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 5.140475626485,
+                  "end_sample": 64,
+                  "mean_qe": 0.1196770043,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.914832068802,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            },
+            {
+              "capacity": {
+                "end": 6,
+                "max": 6,
+                "min": 6,
+                "start": 6
+              },
+              "churn": {
+                "added_edges": 0,
+                "inserted_nodes": 0,
+                "removed_edges": 0,
+                "removed_nodes": 0
+              },
+              "cumulative_qe": 3.859667751604,
+              "end_training_count": 728,
+              "final_components": [
+                {
+                  "centroid": [
+                    -0.001157737706,
+                    -0.069901582036
+                  ],
+                  "centroid_distance_to_a": 0.069911168834,
+                  "centroid_distance_to_b": 2.953029123826,
+                  "nearest_center": "A",
+                  "node_count": 6
+                }
+              ],
+              "mean_qe": 0.060307308619,
+              "mean_te": 0.0,
+              "name": "return",
+              "recovery": {
+                "joint": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                },
+                "qe": {
+                  "censored": true,
+                  "confirmation_samples": null,
+                  "consecutive_windows": 2,
+                  "horizon_samples": 64,
+                  "onset_samples": null
+                }
+              },
+              "samples": 64,
+              "start_training_count": 664,
+              "topographic_misses": 0,
+              "windows": [
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 0.572664586374,
+                  "end_sample": 16,
+                  "mean_qe": 0.035791536648,
+                  "mean_te": 0.0,
+                  "squared_loss": 0.572664586374,
+                  "start_sample": 0,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 1.974861434949,
+                  "end_sample": 32,
+                  "mean_qe": 0.087637303036,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.402196848575,
+                  "start_sample": 16,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 3.070993106792,
+                  "end_sample": 48,
+                  "mean_qe": 0.06850822949,
+                  "mean_te": 0.0,
+                  "squared_loss": 1.096131671843,
+                  "start_sample": 32,
+                  "topographic_misses": 0
+                },
+                {
+                  "capacity": {
+                    "end": 6,
+                    "max": 6,
+                    "min": 6,
+                    "start": 6
+                  },
+                  "churn": {
+                    "added_edges": 0,
+                    "inserted_nodes": 0,
+                    "removed_edges": 0,
+                    "removed_nodes": 0
+                  },
+                  "components_end": 1,
+                  "components_start": 1,
+                  "cumulative_qe": 3.859667751604,
+                  "end_sample": 64,
+                  "mean_qe": 0.049292165301,
+                  "mean_te": 0.0,
+                  "squared_loss": 0.788674644812,
+                  "start_sample": 48,
+                  "topographic_misses": 0
+                }
+              ]
+            }
+          ],
+          "starting_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "node_count": 6,
+            "samples_seen": 600,
+            "sha256": "bd92a715f7402c583d05b25e350a8f9276a6134101208958ab85a0177f367fbf"
+          }
+        }
+      },
+      "capacity_limits_capacity_isolated_interpretation": false,
+      "comparisons": {
+        "abrupt_minus_gradual_peak_intervention_qe": 1.306890668954,
+        "primary_capacity_by_phase": {
+          "intervention": {
+            "compared_steps": 64,
+            "end_counts": [
+              6,
+              6
+            ],
+            "exactly_matched": true,
+            "first_mismatch_step": null,
+            "first_postupdate_mismatch_step": null,
+            "mismatched_steps": 0,
+            "postupdate_mismatched_steps": 0,
+            "start_counts": [
+              6,
+              6
+            ]
+          },
+          "return": {
+            "compared_steps": 64,
+            "end_counts": [
+              6,
+              6
+            ],
+            "exactly_matched": true,
+            "first_mismatch_step": null,
+            "first_postupdate_mismatch_step": null,
+            "mismatched_steps": 0,
+            "postupdate_mismatched_steps": 0,
+            "start_counts": [
+              6,
+              6
+            ]
+          }
+        },
+        "primary_return_qe_difference": -0.426787364632,
+        "primary_return_te_difference": 0.015625,
+        "secondary_abrupt_gradual_capacity_by_phase": {
+          "intervention": {
+            "compared_steps": 64,
+            "end_counts": [
+              6,
+              6
+            ],
+            "exactly_matched": true,
+            "first_mismatch_step": null,
+            "first_postupdate_mismatch_step": null,
+            "mismatched_steps": 0,
+            "postupdate_mismatched_steps": 0,
+            "start_counts": [
+              6,
+              6
+            ]
+          },
+          "return": {
+            "compared_steps": 64,
+            "end_counts": [
+              6,
+              6
+            ],
+            "exactly_matched": true,
+            "first_mismatch_step": null,
+            "first_postupdate_mismatch_step": null,
+            "mismatched_steps": 0,
+            "postupdate_mismatched_steps": 0,
+            "start_counts": [
+              6,
+              6
+            ]
+          }
+        }
+      },
+      "reference": {
+        "band_kind": "operational tolerances, not confidence bands",
+        "evaluation_points": 64,
+        "heldout_mean_qe": 0.05219811463,
+        "heldout_te": 0.0,
+        "qe_threshold": 0.065247643287,
+        "state_sha256_before_and_after": "bd92a715f7402c583d05b25e350a8f9276a6134101208958ab85a0177f367fbf",
+        "te_threshold": 0.02
+      },
+      "seed_id": 1,
+      "stream_seeds": {
+        "heldout": 202609070104,
+        "initialization": 202609070100,
+        "intervention": 202609070102,
+        "return": 202609070103,
+        "warmup": 202609070101
+      },
+      "stream_sha256": {
+        "heldout_A": "9dd661ea125741beee85a4d241044af3b9801001e11c6fbf88bf9b0c296ff897",
+        "initialization_base_noise": "289a8c4238d064cc85879c92ecc8ed9a71456ccbb24315b5360662b7de7fa250",
+        "intervention_base_noise": "3aaf69cdf7be653c80fc2a14ece854dd54b39ec44a7b5102152781ddf56136e8",
+        "shared_return_signals": "7055c9e180a3ff293efdf0ba10c2924eae4215db6c700ff202bcc7386dc5ad05",
+        "warmup_base_noise": "5a6aaf2bb983c79b19ed8aed0437a251abb85b8c91faa4f797019d1ce7e8b57f"
+      },
+      "warmup": {
+        "a": {
+          "component_count": 1,
+          "edge_count": 10,
+          "node_count": 6,
+          "reached_requested_capacity": true,
+          "samples_seen": 600,
+          "sha256": "bd92a715f7402c583d05b25e350a8f9276a6134101208958ab85a0177f367fbf"
+        },
+        "a_b_counts_equal": true,
+        "b": {
+          "component_count": 1,
+          "edge_count": 10,
+          "node_count": 6,
+          "reached_requested_capacity": true,
+          "samples_seen": 600,
+          "sha256": "7738277ad9a1cd0f3f6e6a5cd58df3df89a0a1f6ddf21c0b0c2b56aed69bb2d0"
+        },
+        "starting_capacity_failure": false
+      }
+    }
+  ],
+  "summary": {
+    "claim_limits": [
+      "Geometry and graph continuity are measured; semantic identity, label handling, drift detection, and explicit memory are not evaluated.",
+      "Matched resource caps do not guarantee matched realized capacity. All mismatch and warmup-failure seeds are retained.",
+      "The primary comparison changes prior distribution exposure: total B exposure is greater in the B-only history control.",
+      "Gradual translation has no B hold and less exact B exposure. Its return is a secondary exploratory history comparison.",
+      "No aggregate pass/fail or confirmatory population claim is assigned."
+    ],
+    "mean_return_te_difference": 0.015625,
+    "primary": {
+      "bootstrap_resamples": 100,
+      "bootstrap_seed": 202609079999,
+      "capacity_mismatch_seed_ids": [],
+      "ci95": [
+        -0.426787364632,
+        -0.413137866443
+      ],
+      "interpretation": "descriptive percentile interval over this fixed synthetic seed panel",
+      "mean_return_qe_difference": -0.419962615538,
+      "n": 2,
+      "quantile": "linear interpolation at p * (n - 1)",
+      "resampling_unit": "paired seed-level mean return loss difference",
+      "seed_differences": [
+        {
+          "difference": -0.413137866443,
+          "seed_id": 0
+        },
+        {
+          "difference": -0.426787364632,
+          "seed_id": 1
+        }
+      ],
+      "warmup_capacity_failure_seed_ids": []
+    },
+    "recovery_counts": {
+      "abrupt": {
+        "joint": {
+          "censored": 2,
+          "confirmed": 0
+        },
+        "qe": {
+          "censored": 2,
+          "confirmed": 0
+        }
+      },
+      "b_only": {
+        "joint": {
+          "censored": 2,
+          "confirmed": 0
+        },
+        "qe": {
+          "censored": 2,
+          "confirmed": 0
+        }
+      },
+      "gradual": {
+        "joint": {
+          "censored": 1,
+          "confirmed": 1
+        },
+        "qe": {
+          "censored": 1,
+          "confirmed": 1
+        }
+      },
+      "stationary": {
+        "joint": {
+          "censored": 1,
+          "confirmed": 1
+        },
+        "qe": {
+          "censored": 1,
+          "confirmed": 1
+        }
+      }
+    },
+    "secondary_mean_abrupt_minus_gradual_peak_intervention_qe": 1.160632625224,
+    "stationary_mean_return_qe": 0.059986826035,
+    "stationary_mean_return_te": 0.0
+  }
+}
