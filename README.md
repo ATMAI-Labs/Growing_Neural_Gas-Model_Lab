@@ -28,7 +28,8 @@ labs/
 │   └── experiments/exp-20260727-ee260fe9-fritzke-baseline/
 └── 002-controlled-drift/
     ├── experiments/exp-20260727-eee720cf-frozen-baseline-drift/
-    └── experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/
+    ├── experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/
+    └── experiments/exp-20261009-95f07e14-return-edge-clear-topography/
 src/
 └── atmai_gng/
 ```
@@ -99,6 +100,15 @@ and greater representation loss on the preceding B phase. An explicitly
 post hoc combined B-and-A loss summary is about 5.32% worse for prior-A history.
 The result demonstrates a history-dependent tradeoff, not general superiority
 or an explicit memory mechanism.
+
+The [edge-clear successor](labs/002-controlled-drift/experiments/exp-20261009-95f07e14-return-edge-clear-topography/)
+tests one mechanism against that topographic disadvantage: clearing the whole
+Hebbian edge set immediately before return-A learning, with prototype positions,
+node counts, other learning state, and return samples identical inside each of
+five pairs. The reset made return topographic error worse in all five pairs at
+no representation-error benefit, and joint recovery was later in four of five.
+The unchanged engine refuses such a graph outright, so that arm runs with one
+declared isolated-node relaxation and is reported as a non-canonical state.
 
 [![ATMAI research: a return advantage, an adaptation cost](docs/reports/recurrence-v1.2/overview.svg)](docs/reports/recurrence-v1.2/)
 

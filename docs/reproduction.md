@@ -68,6 +68,10 @@ The capacity-controlled Lab 002 successor (`exp-20260907-8313df3e`) also omits
 only `/environment`; every seed, metric, capacity gate and declared source/data
 fingerprint is compared exactly. Its optional rendered report is a frozen
 artifact; numerical replay does not require matplotlib or regenerate plots.
+The edge-clear Lab 002 successor (`exp-20261009-95f07e14`) omits only
+`/environment` as well; its paired-arm state equality checks, engine-deviation
+record, refusal probes, capacity traces, and recovery decisions are all compared
+exactly.
 
 These fields describe the host, wall-clock time, and Python-traced allocation.
 Each omitted field must still exist. All other values are checked, including

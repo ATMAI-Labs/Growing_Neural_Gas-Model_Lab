@@ -36,6 +36,7 @@ before a later experiment proposes a mechanism intended to address it.
 | --- | --- | --- |
 | [`exp-20260727-eee720cf-frozen-baseline-drift`](experiments/exp-20260727-eee720cf-frozen-baseline-drift/) | Complete | Measure the frozen canonical baseline under controlled translation, rotation, density, and recurrence scenarios |
 | [`exp-20260907-8313df3e-capacity-controlled-recurrence`](experiments/exp-20260907-8313df3e-capacity-controlled-recurrence/) | Complete | Replicate translation/recurrence across 20 paired seeds at matched live-node capacity, preserving return, topology and intervening-phase tradeoffs |
+| [`exp-20261009-95f07e14-return-edge-clear-topography`](experiments/exp-20261009-95f07e14-return-edge-clear-topography/) | Complete | Test one edge-reset mechanism across five paired prior-A seeds at matched positions, counts, learning state, and return samples |
 
 The first experiment is linked to its completed predecessor,
 [`exp-20260727-ee260fe9-fritzke-baseline`](../001-canonical-gng/experiments/exp-20260727-ee260fe9-fritzke-baseline/).
@@ -80,3 +81,14 @@ B losses are also higher. A post hoc two-phase loss summary is worse for prior
 A on average. This motivates measuring the retention/adaptation tradeoff over
 longer multi-regime streams before choosing a mechanism. Full results and
 limits live in the successor record; the original diagnostic remains intact.
+
+The edge-clear successor then tested the simplest reading of that TE
+disadvantage. Clearing every Hebbian edge immediately before return-A learning,
+with prototype positions, node counts, other learning state, and return samples
+identical inside each pair, made return TE **worse** in all five pairs
+(+0.0422 mean, descriptive 95% interval [+0.0410, +0.0432]) at no
+quantization-error benefit, and delayed joint recovery in four of five. The
+unchanged engine also refuses the cleared state outright, so that arm carries a
+single declared isolated-node relaxation and is not a canonical-engine graph.
+Any later forgetting mechanism must be evaluated against the connectivity
+invariant rather than by deleting edges.

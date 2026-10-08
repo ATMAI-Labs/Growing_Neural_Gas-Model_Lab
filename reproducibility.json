@@ -66,6 +66,23 @@
       "ignore_json_paths": [
         "/environment"
       ]
+    },
+    {
+      "id": "exp-20261009-95f07e14",
+      "directory": "labs/002-controlled-drift/experiments/exp-20261009-95f07e14-return-edge-clear-topography",
+      "entrypoint": "run.py",
+      "result": "results/edge-clear-return-topography.json",
+      "engine": "canonical-gng-v1",
+      "files": {
+        "labs/002-controlled-drift/experiments/exp-20261009-95f07e14-return-edge-clear-topography/README.md": "a26180af9cf36b3c84605b2b4645998ac683cca0641997cdc6cbe27f98925be2",
+        "labs/002-controlled-drift/experiments/exp-20261009-95f07e14-return-edge-clear-topography/experiment.json": "c2244660cbcc40e1be99b1cd3e7fa9214c54c2d0ee07b599aaeef9e8861bed2a",
+        "labs/002-controlled-drift/experiments/exp-20261009-95f07e14-return-edge-clear-topography/fixtures/smoke.json": "1afc98dcc0c144c519a3bb45b57b57c457e551087374ca9d85358f9b6ec46bb2",
+        "labs/002-controlled-drift/experiments/exp-20261009-95f07e14-return-edge-clear-topography/results/edge-clear-return-topography.json": "0b9a58fc298f54e5fcd9f8cc1971d9dd6fc5deceabb350427e52cadb84fc33d4",
+        "labs/002-controlled-drift/experiments/exp-20261009-95f07e14-return-edge-clear-topography/run.py": "aed93fd5725fb4f3ed92e113623216db539780b583e7df5ad93cb265eb6334ab"
+      },
+      "ignore_json_paths": [
+        "/environment"
+      ]
     }
   ]
 }
