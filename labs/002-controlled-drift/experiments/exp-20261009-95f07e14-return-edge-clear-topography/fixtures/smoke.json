@@ -1,0 +1,1055 @@
+{
+  "configuration": {
+    "bootstrap_resamples": 100,
+    "evaluation_points": 64,
+    "max_nodes": 6,
+    "phase_steps": 64,
+    "seed_ids": [
+      0,
+      1
+    ],
+    "warmup_steps": 600,
+    "window_size": 16
+  },
+  "configuration_kind": "smoke",
+  "environment": {
+    "implementation": "CPython",
+    "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "python": "3.14.8",
+    "workers": 1
+  },
+  "experiment_id": "exp-20261009-95f07e14",
+  "parameters": {
+    "error_decay": 0.995,
+    "error_reduction": 0.5,
+    "insertion_interval": 100,
+    "max_edge_age": 50,
+    "max_nodes": 6,
+    "neighbor_learning_rate": 0.006,
+    "winner_learning_rate": 0.2
+  },
+  "protocol": {
+    "arm_order": [
+      "retained",
+      "cleared"
+    ],
+    "capacity_comparison": "preupdate node count for every scored sample plus every postupdate count; first_mismatch_step is one-based within the phase",
+    "distribution": {
+      "A": [
+        0.0,
+        0.0
+      ],
+      "B": [
+        2.5,
+        1.5
+      ],
+      "family": "isotropic Gaussian",
+      "sigma": 0.35
+    },
+    "engine_deviation": "EdgeClearGNG overrides assert_invariants only, omitting the isolated-node clause; the canonical engine refuses the cleared state, which is probed and recorded per seed",
+    "failure_policy": "retain every seed; an arm the engine refuses to continue keeps its completed windows and its failure record",
+    "fingerprint_normalization": "data and model-state fingerprints use canonical sorted-key JSON with floats rounded to 12 decimal places; source hashes remain byte-exact; within-run state checks use exact unrounded equality",
+    "measurement": "squared quantization error and topographic missing-edge indicator before every update",
+    "paired_design": "one warm-A model per seed is cloned twice at the end of the B intervention; only the Hebbian edge set differs at the return boundary",
+    "paired_invariance": "prototype positions, node errors, node count, next node id, sample count, and parameters are compared for exact equality; both arms consume the same return signals in the same order",
+    "phase_order": [
+      "intervention",
+      "return"
+    ],
+    "predecessor_cross_check": "the retained arm reproduces the completed predecessor's prior-A arm for the same seed ids, data, and hyperparameters",
+    "primary_estimand": "seed-mean return topographic error of the cleared arm minus the retained arm; negative favours clearing",
+    "recovery": "two consecutive non-overlapping windows; onset is retrospective first-window start; confirmation is second-window end",
+    "rng_seed_formula": "202609070000 + 100 * seed_id + stream_id",
+    "rounding_decimal_places": 12,
+    "seed_ids": [
+      0,
+      1
+    ],
+    "stream_ids": {
+      "heldout": 4,
+      "initialization": 0,
+      "intervention": 2,
+      "return": 3,
+      "warmup": 1
+    },
+    "thresholds": "independent warm-A heldout QE times 1.25 and min(1, warm-A heldout TE + 0.02), frozen before the return phase and shared by both arms",
+    "treatment": "clear every edge immediately before return-A learning; nothing else is modified"
+  },
+  "provenance": {
+    "engine_path": "src/atmai_gng/gng.py",
+    "engine_sha256": "e684e68c0e87a7664e7c5294647f3c09cdb939775e2d322321268b5c56d7ee10",
+    "engine_version": "canonical-gng-v1",
+    "issue": "https://github.com/ATMAI-Labs/Growing_Neural_Gas-Model_Lab/issues/7",
+    "predecessors": [
+      "exp-20260907-8313df3e"
+    ],
+    "runner_sha256": "aed93fd5725fb4f3ed92e113623216db539780b583e7df5ad93cb265eb6334ab"
+  },
+  "schema": "atmai.gng.return-edge-clear-topography/v1",
+  "seed_outcomes": [
+    {
+      "arms": {
+        "cleared": {
+          "boundary_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "isolated_node_count": 0,
+            "node_count": 6,
+            "samples_seen": 664,
+            "sha256": "72fe5221c80721977d6976a4f162238f06314fe825074b2ea0ad503ddbbe617b"
+          },
+          "engine_class": "EdgeClearGNG",
+          "feasible": true,
+          "measured_all_return_samples": true,
+          "phase": {
+            "churn": {
+              "added_edges": 5,
+              "inserted_nodes": 0,
+              "removed_edges": 0,
+              "removed_nodes": 0
+            },
+            "cumulative_qe": 6.695112304148,
+            "failure": null,
+            "final_component_count": 3,
+            "final_edge_count": 5,
+            "final_isolated_node_count": 2,
+            "first_sample_without_isolated_nodes": null,
+            "isolated_nodes_at_start": 6,
+            "mean_qe": 0.104611129752,
+            "mean_te": 0.078125,
+            "name": "return",
+            "recovery": {
+              "joint": {
+                "censored": true,
+                "confirmation_samples": null,
+                "consecutive_windows": 2,
+                "horizon_samples": 64,
+                "onset_samples": null
+              },
+              "qe": {
+                "censored": true,
+                "confirmation_samples": null,
+                "consecutive_windows": 2,
+                "horizon_samples": 64,
+                "onset_samples": null
+              }
+            },
+            "samples": 64,
+            "samples_scored": 64,
+            "topographic_misses": 5,
+            "windows": [
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 3,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 3,
+                "components_start": 6,
+                "cumulative_qe": 1.563646928258,
+                "edge_count": 3,
+                "end_sample": 16,
+                "isolated_nodes": 2,
+                "mean_qe": 0.097727933016,
+                "mean_te": 0.1875,
+                "squared_loss": 1.563646928258,
+                "start_sample": 0,
+                "topographic_misses": 3
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 3,
+                "components_start": 3,
+                "cumulative_qe": 2.552153319065,
+                "edge_count": 3,
+                "end_sample": 32,
+                "isolated_nodes": 2,
+                "mean_qe": 0.061781649425,
+                "mean_te": 0.0,
+                "squared_loss": 0.988506390807,
+                "start_sample": 16,
+                "topographic_misses": 0
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 2,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 3,
+                "components_start": 3,
+                "cumulative_qe": 4.995459541638,
+                "edge_count": 5,
+                "end_sample": 48,
+                "isolated_nodes": 2,
+                "mean_qe": 0.152706638911,
+                "mean_te": 0.125,
+                "squared_loss": 2.443306222573,
+                "start_sample": 32,
+                "topographic_misses": 2
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 3,
+                "components_start": 3,
+                "cumulative_qe": 6.695112304148,
+                "edge_count": 5,
+                "end_sample": 64,
+                "isolated_nodes": 2,
+                "mean_qe": 0.106228297657,
+                "mean_te": 0.0,
+                "squared_loss": 1.69965276251,
+                "start_sample": 48,
+                "topographic_misses": 0
+              }
+            ]
+          }
+        },
+        "retained": {
+          "boundary_state": {
+            "component_count": 1,
+            "edge_count": 10,
+            "isolated_node_count": 0,
+            "node_count": 6,
+            "samples_seen": 664,
+            "sha256": "72fe5221c80721977d6976a4f162238f06314fe825074b2ea0ad503ddbbe617b"
+          },
+          "engine_class": "GrowingNeuralGas",
+          "feasible": true,
+          "measured_all_return_samples": true,
+          "phase": {
+            "churn": {
+              "added_edges": 1,
+              "inserted_nodes": 0,
+              "removed_edges": 1,
+              "removed_nodes": 0
+            },
+            "cumulative_qe": 6.617414759622,
+            "failure": null,
+            "final_component_count": 1,
+            "final_edge_count": 10,
+            "final_isolated_node_count": 0,
+            "first_sample_without_isolated_nodes": 0,
+            "isolated_nodes_at_start": 0,
+            "mean_qe": 0.103397105619,
+            "mean_te": 0.015625,
+            "name": "return",
+            "recovery": {
+              "joint": {
+                "censored": true,
+                "confirmation_samples": null,
+                "consecutive_windows": 2,
+                "horizon_samples": 64,
+                "onset_samples": null
+              },
+              "qe": {
+                "censored": true,
+                "confirmation_samples": null,
+                "consecutive_windows": 2,
+                "horizon_samples": 64,
+                "onset_samples": null
+              }
+            },
+            "samples": 64,
+            "samples_scored": 64,
+            "topographic_misses": 1,
+            "windows": [
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 1,
+                "components_start": 1,
+                "cumulative_qe": 1.535885737828,
+                "edge_count": 10,
+                "end_sample": 16,
+                "isolated_nodes": 0,
+                "mean_qe": 0.095992858614,
+                "mean_te": 0.0,
+                "squared_loss": 1.535885737828,
+                "start_sample": 0,
+                "topographic_misses": 0
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 1,
+                "components_start": 1,
+                "cumulative_qe": 2.523649424115,
+                "edge_count": 10,
+                "end_sample": 32,
+                "isolated_nodes": 0,
+                "mean_qe": 0.061735230393,
+                "mean_te": 0.0,
+                "squared_loss": 0.987763686287,
+                "start_sample": 16,
+                "topographic_misses": 0
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 1,
+                  "inserted_nodes": 0,
+                  "removed_edges": 1,
+                  "removed_nodes": 0
+                },
+                "components_end": 1,
+                "components_start": 1,
+                "cumulative_qe": 4.943832240433,
+                "edge_count": 10,
+                "end_sample": 48,
+                "isolated_nodes": 0,
+                "mean_qe": 0.15126142602,
+                "mean_te": 0.0625,
+                "squared_loss": 2.420182816318,
+                "start_sample": 32,
+                "topographic_misses": 1
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 1,
+                "components_start": 1,
+                "cumulative_qe": 6.617414759622,
+                "edge_count": 10,
+                "end_sample": 64,
+                "isolated_nodes": 0,
+                "mean_qe": 0.104598907449,
+                "mean_te": 0.0,
+                "squared_loss": 1.673582519189,
+                "start_sample": 48,
+                "topographic_misses": 0
+              }
+            ]
+          }
+        }
+      },
+      "boundary_state": {
+        "component_count": 1,
+        "edge_count": 10,
+        "isolated_node_count": 0,
+        "node_count": 6,
+        "samples_seen": 664,
+        "sha256": "72fe5221c80721977d6976a4f162238f06314fe825074b2ea0ad503ddbbe617b"
+      },
+      "capacity_limits_isolated_interpretation": false,
+      "capacity_matched": true,
+      "comparisons": {
+        "capacity": {
+          "comparable": true,
+          "compared_steps": 64,
+          "end_counts": [
+            6,
+            6
+          ],
+          "exactly_matched": true,
+          "first_mismatch_step": null,
+          "first_postupdate_mismatch_step": null,
+          "mismatched_steps": 0,
+          "postupdate_mismatched_steps": 0,
+          "start_counts": [
+            6,
+            6
+          ]
+        },
+        "insertions_in_measured_phase": {
+          "cleared": 0,
+          "retained": 0
+        },
+        "node_removals_in_measured_phase": {
+          "cleared": 0,
+          "retained": 0
+        },
+        "return_qe_difference_cleared_minus_retained": 0.001214024133,
+        "return_te_difference_cleared_minus_retained": 0.0625,
+        "te_difference_favours_clearing": false
+      },
+      "pairing": {
+        "both_arms_scored_every_return_sample": true,
+        "edges_are_the_only_difference": true,
+        "identical_state_before_treatment": true,
+        "next_node_id_identical": true,
+        "nodes_and_errors_identical_after_treatment": true,
+        "parameters_identical": true,
+        "samples_seen_identical": true,
+        "shared_return_signals_sha256": "41549cccfabd58e13f2f154916ac1ff9b72b069866c8138cee08c01097594421"
+      },
+      "prior_a_intervention": {
+        "capacity": {
+          "end": 6,
+          "max": 6,
+          "min": 6,
+          "start": 6
+        },
+        "churn": {
+          "added_edges": 1,
+          "inserted_nodes": 0,
+          "removed_edges": 2,
+          "removed_nodes": 0
+        },
+        "cumulative_qe": 34.18412424395,
+        "final_edge_count": 10,
+        "final_isolated_node_count": 0,
+        "mean_qe": 0.534126941312,
+        "mean_te": 0.015625,
+        "name": "intervention",
+        "samples": 64,
+        "topographic_misses": 1
+      },
+      "reference": {
+        "band_kind": "operational tolerances, not confidence bands",
+        "evaluation_points": 64,
+        "heldout_mean_qe": 0.07393592159,
+        "heldout_te": 0.09375,
+        "qe_threshold": 0.092419901987,
+        "state_sha256_before_and_after": "43b01fc26bc7241f075016122e0e79285f3df31ae15f3257de228508e3290e67",
+        "te_threshold": 0.11375
+      },
+      "seed_id": 0,
+      "stream_seeds": {
+        "heldout": 202609070004,
+        "initialization": 202609070000,
+        "intervention": 202609070002,
+        "return": 202609070003,
+        "warmup": 202609070001
+      },
+      "stream_sha256": {
+        "heldout_A": "5ab9c56ed332202eac6e1988e9b965361cd8c934e9ae367f69ce8e43ad535808",
+        "initialization_base_noise": "4d9f4d7976377f8b79855e45ddf4db2a176ebc3ba469079ea86fc2092286f36f",
+        "intervention_base_noise": "6f8241cabfd25aeb8d111f3709fec0b49b294739a2434d7623668e80fa3c7481",
+        "shared_return_signals": "41549cccfabd58e13f2f154916ac1ff9b72b069866c8138cee08c01097594421",
+        "warmup_base_noise": "16d43869d1e2cff5c717c8cb46dcd1c5137bf5afa5719800412bcd4a012b033f"
+      },
+      "treatment": {
+        "canonical_refusal": {
+          "cleared_isolated_nodes": 4,
+          "engine_class": "GrowingNeuralGas",
+          "error_type": "AssertionError",
+          "message": "processed graphs must not contain isolated nodes",
+          "stepped": false
+        },
+        "clear_record": {
+          "dimension_identical": true,
+          "edges_after": 0,
+          "edges_before": 10,
+          "isolated_nodes_after": 6,
+          "next_node_id_identical": true,
+          "node_count": 6,
+          "nodes_identical_including_errors": true,
+          "parameters_identical": true,
+          "samples_seen_identical": true
+        },
+        "engine_class": "EdgeClearGNG",
+        "overridden_engine_methods": [
+          "assert_invariants"
+        ]
+      },
+      "warmup": {
+        "component_count": 1,
+        "edge_count": 11,
+        "isolated_node_count": 0,
+        "node_count": 6,
+        "reached_requested_capacity": true,
+        "samples_seen": 600,
+        "sha256": "43b01fc26bc7241f075016122e0e79285f3df31ae15f3257de228508e3290e67"
+      }
+    },
+    {
+      "arms": {
+        "cleared": {
+          "boundary_state": {
+            "component_count": 1,
+            "edge_count": 9,
+            "isolated_node_count": 0,
+            "node_count": 6,
+            "samples_seen": 664,
+            "sha256": "2af6af1cb4b489d03e15413bc4376a3634d5665b5468e0ca6067275a5a7c29d4"
+          },
+          "engine_class": "EdgeClearGNG",
+          "feasible": true,
+          "measured_all_return_samples": true,
+          "phase": {
+            "churn": {
+              "added_edges": 5,
+              "inserted_nodes": 0,
+              "removed_edges": 0,
+              "removed_nodes": 0
+            },
+            "cumulative_qe": 6.884267440637,
+            "failure": null,
+            "final_component_count": 3,
+            "final_edge_count": 5,
+            "final_isolated_node_count": 2,
+            "first_sample_without_isolated_nodes": null,
+            "isolated_nodes_at_start": 6,
+            "mean_qe": 0.10756667876,
+            "mean_te": 0.078125,
+            "name": "return",
+            "recovery": {
+              "joint": {
+                "censored": true,
+                "confirmation_samples": null,
+                "consecutive_windows": 2,
+                "horizon_samples": 64,
+                "onset_samples": null
+              },
+              "qe": {
+                "censored": true,
+                "confirmation_samples": null,
+                "consecutive_windows": 2,
+                "horizon_samples": 64,
+                "onset_samples": null
+              }
+            },
+            "samples": 64,
+            "samples_scored": 64,
+            "topographic_misses": 5,
+            "windows": [
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 5,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 3,
+                "components_start": 6,
+                "cumulative_qe": 2.05376474116,
+                "edge_count": 5,
+                "end_sample": 16,
+                "isolated_nodes": 2,
+                "mean_qe": 0.128360296323,
+                "mean_te": 0.3125,
+                "squared_loss": 2.05376474116,
+                "start_sample": 0,
+                "topographic_misses": 5
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 3,
+                "components_start": 3,
+                "cumulative_qe": 4.027448621481,
+                "edge_count": 5,
+                "end_sample": 32,
+                "isolated_nodes": 2,
+                "mean_qe": 0.12335524252,
+                "mean_te": 0.0,
+                "squared_loss": 1.973683880321,
+                "start_sample": 16,
+                "topographic_misses": 0
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 3,
+                "components_start": 3,
+                "cumulative_qe": 5.61005448609,
+                "edge_count": 5,
+                "end_sample": 48,
+                "isolated_nodes": 2,
+                "mean_qe": 0.098912866538,
+                "mean_te": 0.0,
+                "squared_loss": 1.582605864609,
+                "start_sample": 32,
+                "topographic_misses": 0
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 3,
+                "components_start": 3,
+                "cumulative_qe": 6.884267440637,
+                "edge_count": 5,
+                "end_sample": 64,
+                "isolated_nodes": 2,
+                "mean_qe": 0.079638309659,
+                "mean_te": 0.0,
+                "squared_loss": 1.274212954547,
+                "start_sample": 48,
+                "topographic_misses": 0
+              }
+            ]
+          }
+        },
+        "retained": {
+          "boundary_state": {
+            "component_count": 1,
+            "edge_count": 9,
+            "isolated_node_count": 0,
+            "node_count": 6,
+            "samples_seen": 664,
+            "sha256": "2af6af1cb4b489d03e15413bc4376a3634d5665b5468e0ca6067275a5a7c29d4"
+          },
+          "engine_class": "GrowingNeuralGas",
+          "feasible": true,
+          "measured_all_return_samples": true,
+          "phase": {
+            "churn": {
+              "added_edges": 1,
+              "inserted_nodes": 0,
+              "removed_edges": 0,
+              "removed_nodes": 0
+            },
+            "cumulative_qe": 6.389644855794,
+            "failure": null,
+            "final_component_count": 1,
+            "final_edge_count": 10,
+            "final_isolated_node_count": 0,
+            "first_sample_without_isolated_nodes": 0,
+            "isolated_nodes_at_start": 0,
+            "mean_qe": 0.099838200872,
+            "mean_te": 0.015625,
+            "name": "return",
+            "recovery": {
+              "joint": {
+                "censored": true,
+                "confirmation_samples": null,
+                "consecutive_windows": 2,
+                "horizon_samples": 64,
+                "onset_samples": null
+              },
+              "qe": {
+                "censored": true,
+                "confirmation_samples": null,
+                "consecutive_windows": 2,
+                "horizon_samples": 64,
+                "onset_samples": null
+              }
+            },
+            "samples": 64,
+            "samples_scored": 64,
+            "topographic_misses": 1,
+            "windows": [
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 1,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 1,
+                "components_start": 1,
+                "cumulative_qe": 1.984814990497,
+                "edge_count": 10,
+                "end_sample": 16,
+                "isolated_nodes": 0,
+                "mean_qe": 0.124050936906,
+                "mean_te": 0.0625,
+                "squared_loss": 1.984814990497,
+                "start_sample": 0,
+                "topographic_misses": 1
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 1,
+                "components_start": 1,
+                "cumulative_qe": 3.739853874506,
+                "edge_count": 10,
+                "end_sample": 32,
+                "isolated_nodes": 0,
+                "mean_qe": 0.109689930251,
+                "mean_te": 0.0,
+                "squared_loss": 1.75503888401,
+                "start_sample": 16,
+                "topographic_misses": 0
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 1,
+                "components_start": 1,
+                "cumulative_qe": 5.213024985288,
+                "edge_count": 10,
+                "end_sample": 48,
+                "isolated_nodes": 0,
+                "mean_qe": 0.092073194424,
+                "mean_te": 0.0,
+                "squared_loss": 1.473171110782,
+                "start_sample": 32,
+                "topographic_misses": 0
+              },
+              {
+                "capacity": {
+                  "end": 6,
+                  "max": 6,
+                  "min": 6,
+                  "start": 6
+                },
+                "churn": {
+                  "added_edges": 0,
+                  "inserted_nodes": 0,
+                  "removed_edges": 0,
+                  "removed_nodes": 0
+                },
+                "components_end": 1,
+                "components_start": 1,
+                "cumulative_qe": 6.389644855794,
+                "edge_count": 10,
+                "end_sample": 64,
+                "isolated_nodes": 0,
+                "mean_qe": 0.073538741907,
+                "mean_te": 0.0,
+                "squared_loss": 1.176619870506,
+                "start_sample": 48,
+                "topographic_misses": 0
+              }
+            ]
+          }
+        }
+      },
+      "boundary_state": {
+        "component_count": 1,
+        "edge_count": 9,
+        "isolated_node_count": 0,
+        "node_count": 6,
+        "samples_seen": 664,
+        "sha256": "2af6af1cb4b489d03e15413bc4376a3634d5665b5468e0ca6067275a5a7c29d4"
+      },
+      "capacity_limits_isolated_interpretation": false,
+      "capacity_matched": true,
+      "comparisons": {
+        "capacity": {
+          "comparable": true,
+          "compared_steps": 64,
+          "end_counts": [
+            6,
+            6
+          ],
+          "exactly_matched": true,
+          "first_mismatch_step": null,
+          "first_postupdate_mismatch_step": null,
+          "mismatched_steps": 0,
+          "postupdate_mismatched_steps": 0,
+          "start_counts": [
+            6,
+            6
+          ]
+        },
+        "insertions_in_measured_phase": {
+          "cleared": 0,
+          "retained": 0
+        },
+        "node_removals_in_measured_phase": {
+          "cleared": 0,
+          "retained": 0
+        },
+        "return_qe_difference_cleared_minus_retained": 0.007728477888,
+        "return_te_difference_cleared_minus_retained": 0.0625,
+        "te_difference_favours_clearing": false
+      },
+      "pairing": {
+        "both_arms_scored_every_return_sample": true,
+        "edges_are_the_only_difference": true,
+        "identical_state_before_treatment": true,
+        "next_node_id_identical": true,
+        "nodes_and_errors_identical_after_treatment": true,
+        "parameters_identical": true,
+        "samples_seen_identical": true,
+        "shared_return_signals_sha256": "7055c9e180a3ff293efdf0ba10c2924eae4215db6c700ff202bcc7386dc5ad05"
+      },
+      "prior_a_intervention": {
+        "capacity": {
+          "end": 6,
+          "max": 6,
+          "min": 6,
+          "start": 6
+        },
+        "churn": {
+          "added_edges": 0,
+          "inserted_nodes": 0,
+          "removed_edges": 1,
+          "removed_nodes": 0
+        },
+        "cumulative_qe": 43.182995305465,
+        "final_edge_count": 9,
+        "final_isolated_node_count": 0,
+        "mean_qe": 0.674734301648,
+        "mean_te": 0.0,
+        "name": "intervention",
+        "samples": 64,
+        "topographic_misses": 0
+      },
+      "reference": {
+        "band_kind": "operational tolerances, not confidence bands",
+        "evaluation_points": 64,
+        "heldout_mean_qe": 0.05219811463,
+        "heldout_te": 0.0,
+        "qe_threshold": 0.065247643287,
+        "state_sha256_before_and_after": "bd92a715f7402c583d05b25e350a8f9276a6134101208958ab85a0177f367fbf",
+        "te_threshold": 0.02
+      },
+      "seed_id": 1,
+      "stream_seeds": {
+        "heldout": 202609070104,
+        "initialization": 202609070100,
+        "intervention": 202609070102,
+        "return": 202609070103,
+        "warmup": 202609070101
+      },
+      "stream_sha256": {
+        "heldout_A": "9dd661ea125741beee85a4d241044af3b9801001e11c6fbf88bf9b0c296ff897",
+        "initialization_base_noise": "289a8c4238d064cc85879c92ecc8ed9a71456ccbb24315b5360662b7de7fa250",
+        "intervention_base_noise": "3aaf69cdf7be653c80fc2a14ece854dd54b39ec44a7b5102152781ddf56136e8",
+        "shared_return_signals": "7055c9e180a3ff293efdf0ba10c2924eae4215db6c700ff202bcc7386dc5ad05",
+        "warmup_base_noise": "5a6aaf2bb983c79b19ed8aed0437a251abb85b8c91faa4f797019d1ce7e8b57f"
+      },
+      "treatment": {
+        "canonical_refusal": {
+          "cleared_isolated_nodes": 4,
+          "engine_class": "GrowingNeuralGas",
+          "error_type": "AssertionError",
+          "message": "processed graphs must not contain isolated nodes",
+          "stepped": false
+        },
+        "clear_record": {
+          "dimension_identical": true,
+          "edges_after": 0,
+          "edges_before": 9,
+          "isolated_nodes_after": 6,
+          "next_node_id_identical": true,
+          "node_count": 6,
+          "nodes_identical_including_errors": true,
+          "parameters_identical": true,
+          "samples_seen_identical": true
+        },
+        "engine_class": "EdgeClearGNG",
+        "overridden_engine_methods": [
+          "assert_invariants"
+        ]
+      },
+      "warmup": {
+        "component_count": 1,
+        "edge_count": 10,
+        "isolated_node_count": 0,
+        "node_count": 6,
+        "reached_requested_capacity": true,
+        "samples_seen": 600,
+        "sha256": "bd92a715f7402c583d05b25e350a8f9276a6134101208958ab85a0177f367fbf"
+      }
+    }
+  ],
+  "summary": {
+    "claim_limits": [
+      "Topographic error on synthetic geometry is measured; semantic identity, label handling, drift detection, and explicit memory are not evaluated.",
+      "Five paired seeds describe this fixed panel only; there is no aggregate pass/fail and no population claim.",
+      "The treatment is a complete Hebbian edge reset, not a selective B-region reset, so it also discards valid A-region adjacency.",
+      "Cleared edges leave prototypes isolated, which the unchanged engine rejects; the treatment arm therefore relaxes only the isolated-node assertion, and that deviation is recorded per seed.",
+      "Common node caps and matched traces are not evidence of matched resources; every capacity and removal count is retained.",
+      "A reduced topographic error does not establish concept identity or a usable memory mechanism."
+    ],
+    "feasibility": {
+      "canonical_refusal_seed_ids": [
+        0,
+        1
+      ],
+      "cleared_infeasible_seed_ids": [],
+      "cleared_insertion_seed_ids": [],
+      "cleared_node_removal_seed_ids": [],
+      "first_sample_without_isolated_nodes": [
+        {
+          "sample": null,
+          "seed_id": 0
+        },
+        {
+          "sample": null,
+          "seed_id": 1
+        }
+      ],
+      "isolated_nodes_after_clear": [
+        6
+      ],
+      "seed_count": 2
+    },
+    "mean_first_window_return_te": {
+      "cleared": 0.25,
+      "retained": 0.03125
+    },
+    "mean_return_qe_difference": 0.004471251011,
+    "mean_return_te": {
+      "cleared": 0.078125,
+      "retained": 0.015625
+    },
+    "primary": {
+      "bootstrap_resamples": 100,
+      "bootstrap_seed": 202610099999,
+      "capacity_mismatch_seed_ids": [],
+      "ci95": [
+        0.0625,
+        0.0625
+      ],
+      "interpretation": "descriptive percentile interval over this fixed five-seed synthetic panel",
+      "mean_return_te_difference": 0.0625,
+      "n": 2,
+      "quantile": "linear interpolation at p * (n - 1)",
+      "resampling_unit": "paired seed-level mean return topographic error difference",
+      "seed_differences": [
+        {
+          "difference": 0.0625,
+          "seed_id": 0
+        },
+        {
+          "difference": 0.0625,
+          "seed_id": 1
+        }
+      ],
+      "seeds_favouring_clearing": 0,
+      "seeds_favouring_retaining": 2
+    },
+    "recovery_counts": {
+      "cleared": {
+        "joint": {
+          "censored": 2,
+          "confirmed": 0
+        },
+        "qe": {
+          "censored": 2,
+          "confirmed": 0
+        }
+      },
+      "retained": {
+        "joint": {
+          "censored": 2,
+          "confirmed": 0
+        },
+        "qe": {
+          "censored": 2,
+          "confirmed": 0
+        }
+      }
+    }
+  }
+}
